@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Page404Component } from './core/pages/page404/page404.component';
+import { MainPageComponent } from './main/main-page/main-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '404',
+    component: Page404Component,
+  },
+  { path: '', component: MainPageComponent },
+  { path: '**', redirectTo: '404' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
