@@ -1,0 +1,91 @@
+.mat-toolbar {
+  height: 88px;
+  background-color: rgba(116, 118, 122, 0.2);
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+
+  .header-input,
+  .auth-btn {
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 8px;
+    height: 40px;
+    background: rgba(241, 243, 246, 0.15);
+    border: 0.5px solid #cecece;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-input {
+    ::ng-deep .mat-mdc-select-trigger {
+      padding: 12px 16px;
+    }
+  }
+
+  .mainpage-link {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    margin-right: 1rem;
+  }
+
+  .logo {
+    width: 114px;
+    height: 40;
+  }
+
+  .header-breadcrumbs {
+    flex-grow: 1;
+    margin-right: 1rem;
+
+    .header-page-info {
+      text-align: right;
+    }
+  }
+
+  .header-settings {
+    display: flex;
+    justify-content: center;
+
+    .date-format-input {
+      min-width: 162px;
+    }
+
+    .currency-input {
+      min-width: 62px;
+
+      ::ng-deep .mat-mdc-select-arrow-wrapper {
+        display: none;
+      }
+
+      ::ng-deep .mat-mdc-select-value {
+        text-align: center;
+      }
+    }
+
+    .auth-btn {
+      cursor: pointer;
+      font-family: 'Roboto';
+      font-weight: 500;
+      font-size: 16px;
+      color: #ffffff;
+      line-height: 20px;
+      min-width: 114px;
+    }
+
+    .cart-btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

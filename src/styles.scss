@@ -1,4 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 1128px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mdc-menu-surface {
+  background-color: #fff;
+}
+
+.mdc-list-item__primary-text {
+  color: #1c1b1f;
+}
+
+.mdc-list-item--selected {
+  .mdc-list-item__primary-text {
+    color: #1c1b1f;
+  }
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled),
+.mat-mdc-option:focus.mdc-list-item,
+.mat-mdc-option.mat-mdc-option-active.mdc-list-item,
+.mat-mdc-option.mdc-list-item--selected:not(.mat-mdc-option-multiple):not(
+    .mdc-list-item--disabled
+  ) {
+  background-color: #e1e5eb;
+}
+
+.mat-pseudo-checkbox.mat-mdc-option-pseudo-checkbox.mat-pseudo-checkbox-minimal.mat-pseudo-checkbox-checked {
+  width: 10px;
+  &::after {
+    width: 10px;
+    color: #11397e;
+  }
+}

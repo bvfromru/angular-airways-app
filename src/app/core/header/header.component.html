@@ -1,1 +1,38 @@
-<p>header works!</p>
+<mat-toolbar>
+  <div class="wrapper">
+    <div class="header-container">
+      <a class="mainpage-link" routerLink="/">
+        <img src="../../../assets/svg/logo.svg" alt="Airways logo" class="logo" />
+      </a>
+      <div class="header-breadcrumbs">
+        <div class="header-page-info">Book Flights</div>
+      </div>
+      <div class="header-settings">
+        <mat-select value="dateFormat" class="header-input date-format-input">
+          <mat-option *ngFor="let dateFormat of dateFormats" value="dateFormat">
+            {{ dateFormat }}
+          </mat-option>
+        </mat-select>
+
+        <mat-select
+          value="currency"
+          class="header-input currency-input"
+          hideSingleSelectionIndicator="true"
+        >
+          <mat-option *ngFor="let currency of currencies" value="currency">
+            {{ currency }}
+          </mat-option>
+        </mat-select>
+
+        <button mat-stroked-button class="auth-btn">
+          <img src="../../../assets/svg/user-icon.svg" alt="Cart" />
+          Sign in
+        </button>
+
+        <a routerLink="/cart" class="cart-btn">
+          <img src="../../../assets/svg/shopping-cart-icon.svg" alt="Cart" />
+        </a>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
