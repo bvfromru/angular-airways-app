@@ -1,0 +1,45 @@
+<form [formGroup]="flightSearchForm" (submit)="onSubmitForm()" class="flight-select-form">
+  <div class="flight-type">
+    <mat-radio-group formControlName="type">
+      <mat-radio-button *ngFor="let flightType of flightTypes" [value]="flightType">
+        <span>{{ flightType }}</span>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field>
+    <mat-label>From</mat-label>
+    <input type="text" matInput formControlName="from" [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
+        <div class="option-description">{{ option.name }}</div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Destination</mat-label>
+    <input type="text" matInput formControlName="to" [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
+        <div class="option-description">{{ option.name }}</div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Dates</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" />
+      <input matEndDate placeholder="End date" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <button mat-button [disabled]="!flightSearchForm.valid" type="submit" class="submit-button">
+    Search
+  </button>
+</form>

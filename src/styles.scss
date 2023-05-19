@@ -55,3 +55,117 @@ body {
     color: #11397e;
   }
 }
+
+.mat-mdc-form-field {
+  .mdc-text-field {
+    background-color: #f4f6f9;
+    color: #1c1b1f;
+    border-radius: 4px;
+    border: 1px solid rgba(116, 118, 122, 0.6);
+  }
+
+  .mdc-text-field {
+    .mdc-floating-label {
+      color: #1c1b1f;
+    }
+
+    .mat-mdc-input-element {
+      color: #1c1b1f;
+    }
+  }
+
+  .mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom: none;
+  }
+}
+
+.mat-mdc-radio-group {
+  display: flex;
+  gap: 30px;
+}
+
+.mat-mdc-radio-button {
+  .mdc-form-field > label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #11397e;
+  }
+
+  .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
+    border-color: #11397e !important;
+  }
+
+  .mdc-radio
+    .mdc-radio__native-control:enabled:checked
+    + .mdc-radio__background
+    .mdc-radio__outer-circle {
+    border-color: #11397e !important;
+  }
+
+  .mdc-radio
+    .mdc-radio__native-control:enabled:not(:checked)
+    + .mdc-radio__background
+    .mdc-radio__outer-circle {
+    border-color: #74767a !important;
+  }
+}
+
+.mat-mdc-icon-button svg {
+  color: black;
+}
+
+.mat-date-range-input-separator {
+  color: #1c1b1f;
+}
+
+.mat-datepicker-content .mat-calendar {
+  background-color: #fff;
+}
+
+.mat-calendar-body-cell-content.mat-focus-indicator {
+  color: #1c1b1f;
+}
+
+.mat-datepicker-content .mat-mdc-button {
+  color: #1c1b1f !important;
+  .mat-calendar-arrow {
+    fill: #1c1b1f;
+  }
+}
+
+.mat-datepicker-toggle,
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+  color: #1c1b1f;
+}
+
+.mat-calendar-table-header th {
+  color: #1c1b1f;
+}
+
+.mat-calendar-body-label {
+  color: #1c1b1f;
+}
+
+.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-today {
+  border: 1px solid #11397e;
+  color: #11397e !important;
+  background-color: transparent !important;
+}
+
+.mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected {
+  background-color: #11397e !important;
+  color: #fff !important;
+}
+
+.mat-calendar-body-in-range::before {
+  background-color: #e9edf1 !important;
+}
+
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  background-color: #e9edf1 !important;
+}
