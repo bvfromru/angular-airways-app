@@ -1,0 +1,31 @@
+.passenger-row {
+  display: flex;
+  justify-content: space-between;
+  min-width: 180px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    .info-header {
+      color: #11397e;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .info-description {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: #74767a;
+    }
+  }
+
+  .counter {
+    display: flex;
+    align-items: center;
+  }
+}

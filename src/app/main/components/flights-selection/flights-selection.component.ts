@@ -17,6 +17,31 @@ export class FlightsSelectionComponent implements OnInit {
 
   filteredOptions: Observable<Airport[]>;
 
+  passengersConfig = {
+    adults: {
+      key: 'adults',
+      title: 'Adult',
+      age: '14+ years',
+    },
+    children: {
+      key: 'children',
+      title: 'Child',
+      age: '2-14 years',
+    },
+    infants: {
+      key: 'infants',
+      title: 'Infant',
+      age: '0-2 years',
+    },
+  };
+
+  public passengers = {
+    adults: 1,
+    children: 0,
+    infants: 0,
+    sum: 1,
+  };
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -50,6 +75,12 @@ export class FlightsSelectionComponent implements OnInit {
   onSubmitForm(): void {
     console.log(this.flightSearchForm.value);
   }
+
+  onPassengersCountChange(newPassengers: any) {
+    this.passengers = { ...newPassengers };
+  }
+
+  onReverseBtnClick() {}
 
   private _filter(city: string): Airport[] {
     const filterValue = city.toLowerCase();

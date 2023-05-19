@@ -7,37 +7,80 @@
     </mat-radio-group>
   </div>
 
-  <mat-form-field>
-    <mat-label>From</mat-label>
-    <input type="text" matInput formControlName="from" [matAutocomplete]="auto" />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
-        <div class="option-description">{{ option.name }}</div>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+  <div class="route">
+    <button class="reverse-btn" (click)="onReverseBtnClick()">
+      <img src="../../../../assets/svg/reverse-icon.svg" alt="reverse" />
+    </button>
 
-  <mat-form-field>
-    <mat-label>Destination</mat-label>
-    <input type="text" matInput formControlName="to" [matAutocomplete]="auto" />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
-        <div class="option-description">{{ option.name }}</div>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>From</mat-label>
+      <input type="text" matInput formControlName="from" [matAutocomplete]="auto" />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
+          <div class="option-description">{{ option.name }}</div>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Dates</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" />
-      <input matEndDate placeholder="End date" />
-    </mat-date-range-input>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Destination</mat-label>
+      <input type="text" matInput formControlName="to" [matAutocomplete]="auto" />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
+          <div class="option-description">{{ option.name }}</div>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div class="details">
+    <mat-form-field class="date-picker">
+      <mat-label>Dates</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" />
+        <input matEndDate placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <mat-form-field class="passengers-input">
+      <mat-label>Passengers</mat-label>
+      <mat-select class="passengers-select">
+        <mat-select-trigger class="passengers-trigger">
+          <span *ngIf="passengers.adults > 0">{{ passengers.adults }} Adult, </span>
+          <span *ngIf="passengers.children > 0">{{ passengers.children }} Child, </span>
+          <span *ngIf="passengers.infants > 0">{{ passengers.infants }} Infants </span>
+        </mat-select-trigger>
+
+        <mat-option [value]="passengersConfig.adults">
+          <app-passengers-count
+            [config]="passengersConfig.adults"
+            [passengers]="passengers"
+            (passengersEvent)="onPassengersCountChange($event)"
+          />
+        </mat-option>
+
+        <mat-option [value]="passengersConfig.children">
+          <app-passengers-count
+            [config]="passengersConfig.children"
+            [passengers]="passengers"
+            (passengersEvent)="onPassengersCountChange($event)"
+          />
+        </mat-option>
+
+        <mat-option [value]="passengersConfig.infants">
+          <app-passengers-count
+            [config]="passengersConfig.infants"
+            [passengers]="passengers"
+            (passengersEvent)="onPassengersCountChange($event)"
+          />
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <button mat-button [disabled]="!flightSearchForm.valid" type="submit" class="submit-button">
     Search
