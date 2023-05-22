@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="heading">
+    <img src="../../../../assets/svg/plane-destinations.svg" alt="destinations" />
+    {{ from }} to {{ to }}
+  </div>
+  <div class="swiper">
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <swiper-container appSwiper [config]="config" init="false" class="swiper-container">
+      <swiper-slide class="" *ngFor="let flight of flights" class="swiper-slide">
+        <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
+        <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
+        <div class="price">{{ flight.price }}</div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="selected-info">
+    <div class="selected-details">
+      <div class="from-date">Wed, 1 Mar 2023</div>
+      <div class="flight-duration">2h 50m</div>
+      <div class="to-date">Wed, 1 Mar 2023</div>
+      <div class="from-time"><span class="time">8:40</span> UTC +0</div>
+      <div class="plane"><img src="../../../../assets//svg/plane-route.svg" alt="plane" /></div>
+      <div class="to-time">UTC +1 <span class="time">12:00</span></div>
+
+      <div class="from-city">Dublin</div>
+      <div class="direct">Direct</div>
+      <div class="to-city">Warsaw Modlin</div>
+    </div>
+    <div class="flight-number">Flight no.&nbsp; <span class="number">FR 1925</span></div>
+    <div class="selected-price">
+      <div class="price-column">
+        <div class="sits-counter">100 seats available</div>
+        <div>Price</div>
+        <div class="price-amount">€146.70</div>
+      </div>
+      <div class="select-column">
+        <button type="button">Select</button>
+      </div>
+    </div>
+  </div>
+</div>

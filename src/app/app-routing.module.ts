@@ -9,6 +9,10 @@ const routes: Routes = [
     component: Page404Component,
   },
   { path: '', component: MainPageComponent },
+  {
+    path: 'flights',
+    loadChildren: () => import('./flights/flights.module').then((m) => m.FlightsModule),
+  },
   { path: '**', redirectTo: '404' },
 ];
 
