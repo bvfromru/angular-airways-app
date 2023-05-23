@@ -11,3 +11,15 @@ export enum Currencies {
   rub = 'RUB',
   pln = 'PLN',
 }
+
+export interface DateInputFormats {
+  parse: {
+    dateInput: string;
+  };
+  display: {
+    dateInput: string;
+    monthYearLabel: string;
+    dateA11yLabel: string;
+    monthYearA11yLabel: string;
+  };
+}

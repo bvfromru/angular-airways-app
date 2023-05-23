@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxRerenderModule } from 'ngx-rerender';
 import { FlightsSelectionComponent } from './components/flights-selection/flights-selection.component';
 import { PassengersCountComponent } from './components/passengers-count/passengers-count.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
@@ -28,6 +29,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
+    NgxRerenderModule,
   ],
 })
 export class MainModule {}

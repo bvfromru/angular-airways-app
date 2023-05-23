@@ -1,4 +1,9 @@
-<form [formGroup]="flightSearchForm" (submit)="onSubmitForm()" class="flight-select-form">
+<form
+  [formGroup]="flightSearchForm"
+  (submit)="onSubmitForm()"
+  class="flight-select-form"
+  *mcRerender="dateFormat"
+>
   <div class="flight-type">
     <mat-radio-group formControlName="type">
       <mat-radio-button *ngFor="let flightType of flightTypes" [value]="flightType">
@@ -41,6 +46,7 @@
       <mat-date-range-input [rangePicker]="picker">
         <input matStartDate placeholder="Start date" formControlName="dateFrom" />
         <input matEndDate placeholder="End date" formControlName="dateTo" />
+        <mat-hint>MMMM DD, YYYY</mat-hint>
       </mat-date-range-input>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>

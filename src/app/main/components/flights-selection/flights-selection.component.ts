@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { Observable, map, startWith } from 'rxjs';
+import { DateInputFormats } from 'src/app/core/models/settings.model';
+import { SettingsService } from 'src/app/core/services/settings.service';
 import { Airport, airportsList } from '../../pages/main-page/airports-list';
 
 @Component({
@@ -9,6 +12,8 @@ import { Airport, airportsList } from '../../pages/main-page/airports-list';
   styleUrls: ['./flights-selection.component.scss'],
 })
 export class FlightsSelectionComponent implements OnInit {
+  dateFormat: string;
+
   flightTypes = ['Round Trip', 'One Way'];
 
   flightSearchForm: FormGroup = new FormGroup({});
@@ -42,9 +47,18 @@ export class FlightsSelectionComponent implements OnInit {
     sum: 1,
   };
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    @Inject(MAT_DATE_FORMATS) public dateInputFormat: DateInputFormats,
+    private settingsService: SettingsService,
+  ) {}
 
   ngOnInit(): void {
+    this.settingsService.currentDateFormat$.subscribe((dateFormat) => {
+      this.dateFormat = dateFormat;
+      this.dateInputFormat.display.dateInput = dateFormat;
+    });
+
     this.flightSearchForm = this.formBuilder.group({
       type: [this.flightTypes[0], [Validators.required]],
       from: ['', [Validators.required]],
