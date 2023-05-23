@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from '@angular/core';
 import { A11y, Navigation, SwiperOptions } from 'swiper';
 import { SwiperDirective } from '../../directives/swiper.directive';
+import { Direction } from '../../models/flight.models';
 import { flightData } from '../../pages/flights-page/mockFlights';
 
 @Component({
@@ -13,6 +14,8 @@ import { flightData } from '../../pages/flights-page/mockFlights';
   styleUrls: ['./flight-selection.component.scss'],
 })
 export class FlightSelectionComponent {
+  @Input() direction: Direction = 'forward';
+
   flights = flightData;
 
   public config: SwiperOptions = {

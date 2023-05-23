@@ -49,6 +49,8 @@ export class FlightsSelectionComponent implements OnInit {
       type: [this.flightTypes[0], [Validators.required]],
       from: ['', [Validators.required]],
       to: ['', [Validators.required]],
+      dateFrom: ['', [Validators.required]],
+      dateTo: ['', [Validators.required]],
     });
     const formControlFrom = this.flightSearchForm.get('from');
     this.filteredOptions = formControlFrom!.valueChanges.pipe(

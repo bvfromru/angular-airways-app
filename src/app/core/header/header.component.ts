@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Currencies, DateFormats } from 'src/app/shared/constants/settings';
+import { Currencies, DateFormats } from 'src/app/core/models/settings.model';
+import { SettingsService } from '../services/settings.service';
 
 @Component({
   selector: 'app-header',
@@ -14,4 +15,14 @@ export class HeaderComponent {
   dateFormats = Object.values(DateFormats);
 
   currencies = Object.values(Currencies);
+
+  constructor(public settingsService: SettingsService) {}
+
+  onDateFormatsChanged(newDateFormat: DateFormats) {
+    this.settingsService.setCurrentDateFormat(newDateFormat);
+  }
+
+  onCurrencyChanged(newCurrency: Currencies) {
+    this.settingsService.setCurrentCurrency(newCurrency);
+  }
 }

@@ -8,18 +8,23 @@
         <div class="header-page-info">Book Flights</div>
       </div>
       <div class="header-settings">
-        <mat-select value="dateFormat" class="header-input date-format-input">
-          <mat-option *ngFor="let dateFormat of dateFormats" value="dateFormat">
+        <mat-select
+          [value]="this.settingsService.currentDateFormat$ | async"
+          (selectionChange)="onDateFormatsChanged($event.value)"
+          class="header-input date-format-input"
+        >
+          <mat-option *ngFor="let dateFormat of dateFormats" [value]="dateFormat">
             {{ dateFormat }}
           </mat-option>
         </mat-select>
 
         <mat-select
-          value="currency"
+          [value]="this.settingsService.currentCurrency$ | async"
+          (selectionChange)="onCurrencyChanged($event.value)"
           class="header-input currency-input"
           hideSingleSelectionIndicator="true"
         >
-          <mat-option *ngFor="let currency of currencies" value="currency">
+          <mat-option *ngFor="let currency of currencies" [value]="currency">
             {{ currency }}
           </mat-option>
         </mat-select>
@@ -34,5 +39,5 @@
         </a>
       </div>
     </div>
-  </div> 
+  </div>
 </mat-toolbar>

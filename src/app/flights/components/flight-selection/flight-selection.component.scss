@@ -45,7 +45,7 @@
   margin-top: auto;
   padding: 4px;
   box-sizing: border-box;
-  width: calc(20%);
+  cursor: pointer;
 }
 
 .swiper-slide-prev,
@@ -115,7 +115,7 @@
   border-radius: 5px;
   display: grid;
   grid-template-columns: 10fr 3fr 5fr;
-  padding: 10px 10px;
+  padding: 0px 10px;
 
   @media (max-width: 500px) {
     display: flex;
@@ -128,7 +128,7 @@
   grid-gap: 10px;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto auto;
-  padding: 15px 10px 15px 30px;
+  padding: 25px 10px 25px 30px;
 
   @media (max-width: 500px) {
     padding: 10px;
@@ -211,7 +211,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 10px;
+  padding: 15px 10px;
 
   .number {
     font-weight: 400;
@@ -287,5 +287,12 @@
       color: #ffffff;
       cursor: pointer;
     }
+  }
+}
+
+.backward {
+  .plane,
+  .plane-destinations {
+    transform: scaleX(-1);
   }
 }

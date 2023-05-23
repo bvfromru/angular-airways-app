@@ -1,11 +1,13 @@
-<header>
-  <app-header></app-header>
-</header>
-<main>
-  <div class="wrapper">
-    <router-outlet></router-outlet>
-  </div>
-</main>
-<footer>
-  <app-footer></app-footer>
-</footer>
+<div [ngClass]="{ 'main-page': isMainPage }" class="app-container">
+  <header>
+    <app-header></app-header>
+  </header>
+  <main class="main-container">
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>

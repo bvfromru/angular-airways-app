@@ -1,6 +1,10 @@
-<div class="container">
+<div [ngClass]="{ backward: direction === 'backward' }" class="container">
   <div class="heading">
-    <img src="../../../../assets/svg/plane-destinations.svg" alt="destinations" />
+    <img
+      src="../../../../assets/svg/plane-destinations.svg"
+      alt="destinations"
+      class="plane-destinations"
+    />
     {{ from }} to {{ to }}
   </div>
   <div class="swiper">
