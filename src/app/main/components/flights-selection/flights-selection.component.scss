@@ -16,7 +16,7 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.5px;
-    color: #1c1b1f;
+    color: var(--neutral-0);
   }
 
   .option-description {
@@ -40,7 +40,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    color: #ffffff;
+    color: var(--white);
     max-width: 126px;
     height: 60px;
     cursor: pointer;
@@ -90,7 +90,7 @@
     align-items: center;
     width: 40px;
     height: 40px;
-    background: #ffffff;
+    background: var(--white);
     border: 1px solid rgba(116, 118, 122, 0.6);
     border-radius: 50%;
     color: #74767a;
@@ -101,7 +101,7 @@
 
 .passengers-select {
   .passengers-trigger {
-    color: #1c1b1f;
+    color: var(--neutral-0);
     text-overflow: ellipsis;
   }
 }

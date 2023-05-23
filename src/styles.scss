@@ -1,3 +1,90 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$primary: #11397e;
+$black: #000;
+$error-red: #b3261e;
+
+$airways-primary-palette: (
+  50: $primary,
+  100: $primary,
+  200: $primary,
+  300: $primary,
+  400: $primary,
+  500: $primary,
+  600: $primary,
+  700: $primary,
+  800: $primary,
+  900: $primary,
+  contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $black,
+    600: $black,
+    700: $black,
+    800: $black,
+    900: $black,
+  ),
+);
+
+$airways-warn-palette: (
+  50: $error-red,
+  100: $error-red,
+  200: $error-red,
+  300: $error-red,
+  400: $error-red,
+  500: $error-red,
+  600: $error-red,
+  700: $error-red,
+  800: $error-red,
+  900: $error-red,
+  contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $black,
+    600: $black,
+    700: $black,
+    800: $black,
+    900: $black,
+  ),
+);
+
+$airways-app-primary: mat.define-palette($airways-primary-palette);
+$airways-app-accent: mat.define-palette($airways-primary-palette);
+$airways-app-warn: mat.define-palette($airways-warn-palette);
+$airways-app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $airways-app-primary,
+      accent: $airways-app-accent,
+      warn: $airways-app-warn,
+    ),
+  )
+);
+@include mat.all-component-themes($airways-app-theme);
+
+:root {
+  --primary: #11397e;
+  --light-grey: #f5f5f5;
+  --navy: #0090bd;
+  --white: #ffffff;
+  --error-red: #b3261e;
+  --black: #000;
+  --neutral-0: #1c1b1f;
+  --neutral-30: #74767a;
+  --neutral-40: rgba(116, 118, 122, 0.6);
+  --neutral-60: #cecece;
+  --neutral-70: #e1e5eb;
+  --neutral-80: #e9edf1;
+  --neutral-90: #f4f6f9;
+}
+
 html,
 body {
   height: 100%;
@@ -24,16 +111,16 @@ body {
 }
 
 .mdc-menu-surface {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .mdc-list-item__primary-text {
-  color: #1c1b1f;
+  color: var(--neutral-0);
 }
 
 .mdc-list-item--selected {
   .mdc-list-item__primary-text {
-    color: #1c1b1f;
+    color: var(--neutral-0);
   }
 }
 
@@ -43,7 +130,7 @@ body {
 .mat-mdc-option.mdc-list-item--selected:not(.mat-mdc-option-multiple):not(
     .mdc-list-item--disabled
   ) {
-  background-color: #e1e5eb;
+  background-color: var(--neutral-70);
 }
 
 .mat-pseudo-checkbox.mat-mdc-option-pseudo-checkbox.mat-pseudo-checkbox-minimal.mat-pseudo-checkbox-checked {
@@ -56,20 +143,24 @@ body {
 
 .mat-mdc-form-field {
   .mdc-text-field {
-    background-color: #f4f6f9;
-    color: #1c1b1f;
+    background-color: var(--neutral-90);
+    color: var(--neutral-0);
     border-radius: 4px;
-    border: 1px solid rgba(116, 118, 122, 0.6);
+    border: 1px solid var(--neutral-40);
   }
 
   .mdc-text-field {
     .mdc-floating-label {
-      color: #1c1b1f;
+      color: var(--neutral-0);
     }
 
     .mat-mdc-input-element {
-      color: #1c1b1f;
+      color: var(--neutral-0);
     }
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--invalid) .mdc-line-ripple::before {
+    border-bottom: none !important;
   }
 
   .mdc-text-field--filled .mdc-line-ripple::after {
@@ -105,7 +196,7 @@ body {
     .mdc-radio__native-control:enabled:not(:checked)
     + .mdc-radio__background
     .mdc-radio__outer-circle {
-    border-color: #74767a !important;
+    border-color: var(--neutral-30) !important;
   }
 }
 
@@ -114,36 +205,36 @@ body {
 }
 
 .mat-date-range-input-separator {
-  color: #1c1b1f;
+  color: var(--neutral-0);
 }
 
 .mat-datepicker-content .mat-calendar {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .mat-calendar-body-cell-content.mat-focus-indicator {
-  color: #1c1b1f;
+  color: var(--neutral-0);
 }
 
 .mat-datepicker-content .mat-mdc-button {
-  color: #1c1b1f !important;
+  color: var(--neutral-0) !important;
   .mat-calendar-arrow {
-    fill: #1c1b1f;
+    fill: var(--neutral-0);
   }
 }
 
 .mat-datepicker-toggle,
 .mat-datepicker-content .mat-calendar-next-button,
 .mat-datepicker-content .mat-calendar-previous-button {
-  color: #1c1b1f;
+  color: var(--neutral-0);
 }
 
 .mat-calendar-table-header th {
-  color: #1c1b1f;
+  color: var(--neutral-0);
 }
 
 .mat-calendar-body-label {
-  color: #1c1b1f;
+  color: var(--neutral-0);
 }
 
 .mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-today {
@@ -154,18 +245,18 @@ body {
 
 .mat-calendar-body-cell-content.mat-focus-indicator.mat-calendar-body-selected {
   background-color: #11397e !important;
-  color: #fff !important;
+  color: var(--white) !important;
 }
 
 .mat-calendar-body-in-range::before {
-  background-color: #e9edf1 !important;
+  background-color: var(--neutral-80) !important;
 }
 
 .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
   > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
     .mat-calendar-body-comparison-identical
   ) {
-  background-color: #e9edf1 !important;
+  background-color: var(--neutral-80) !important;
 }
 
 .mat-mdc-select-trigger .mat-mdc-select-arrow {

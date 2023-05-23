@@ -1,8 +1,8 @@
 .mat-toolbar {
   height: 92px;
   border-top: 1px solid #d0d9df;
-  background-color: #f5f5f5;
-  color: #000;
+  background-color: var(--light-grey);
+  color: var(--black);
   display: flex;
   align-items: center;
   gap: 24px;
@@ -27,7 +27,7 @@
     }
 
     .copyright {
-      color: #11397e;
+      color: var(--primary);
       text-decoration: none;
     }
 
@@ -41,7 +41,7 @@
       }
 
       a {
-        color: #000;
+        color: var(--black);
         text-decoration: none;
       }
     }
