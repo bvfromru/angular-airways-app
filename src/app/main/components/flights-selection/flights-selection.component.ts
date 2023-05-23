@@ -12,7 +12,9 @@ import { Airport, airportsList } from '../../pages/main-page/airports-list';
   styleUrls: ['./flights-selection.component.scss'],
 })
 export class FlightsSelectionComponent implements OnInit {
-  dateFormat: string;
+  minDate = new Date();
+
+  trigger: string;
 
   flightTypes = ['Round Trip', 'One Way'];
 
@@ -55,7 +57,7 @@ export class FlightsSelectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.settingsService.currentDateFormat$.subscribe((dateFormat) => {
-      this.dateFormat = dateFormat;
+      this.trigger = dateFormat;
       this.dateInputFormat.display.dateInput = dateFormat;
     });
 
@@ -64,8 +66,9 @@ export class FlightsSelectionComponent implements OnInit {
       from: ['', [Validators.required]],
       to: ['', [Validators.required]],
       dateFrom: ['', [Validators.required]],
-      dateTo: ['', [Validators.required]],
+      dateTo: [''],
     });
+
     const formControlFrom = this.flightSearchForm.get('from');
     this.filteredOptions = formControlFrom!.valueChanges.pipe(
       startWith(''),
@@ -94,9 +97,18 @@ export class FlightsSelectionComponent implements OnInit {
 
   onPassengersCountChange(newPassengers: any) {
     this.passengers = { ...newPassengers };
+    // this.trigger = JSON.stringify(newPassengers);
   }
 
-  onReverseBtnClick() {}
+  get isRoundTrip() {
+    return this.flightSearchForm.get('type')?.value === this.flightTypes[0];
+  }
+
+  public onReverseBtnClick(): void {
+    const tempValue = this.flightSearchForm.get('from')?.value;
+    this.flightSearchForm.get('from')?.setValue(this.flightSearchForm.get('to')?.value);
+    this.flightSearchForm.get('to')?.setValue(tempValue);
+  }
 
   private _filter(city: string): Airport[] {
     const filterValue = city.toLowerCase();

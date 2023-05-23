@@ -2,7 +2,7 @@
   [formGroup]="flightSearchForm"
   (submit)="onSubmitForm()"
   class="flight-select-form"
-  *mcRerender="dateFormat"
+  *mcRerender="trigger"
 >
   <div class="flight-type">
     <mat-radio-group formControlName="type">
@@ -41,16 +41,11 @@
   </div>
 
   <div class="details">
-    <mat-form-field class="date-picker">
-      <mat-label>Dates</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date" formControlName="dateFrom" />
-        <input matEndDate placeholder="End date" formControlName="dateTo" />
-        <mat-hint>MMMM DD, YYYY</mat-hint>
-      </mat-date-range-input>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
+    <ng-container
+      *ngTemplateOutlet="isRoundTrip ? roundTrip : oneWay"
+      [formGroup]="flightSearchForm"
+    >
+    </ng-container>
 
     <mat-form-field class="passengers-input">
       <mat-label>Passengers</mat-label>
@@ -61,15 +56,15 @@
           <span *ngIf="passengers.infants > 0">{{ passengers.infants }} Infants </span>
         </mat-select-trigger>
 
-        <mat-option [value]="passengersConfig.adults">
+        <div>
           <app-passengers-count
             [config]="passengersConfig.adults"
             [passengers]="passengers"
             (passengersEvent)="onPassengersCountChange($event)"
           />
-        </mat-option>
+        </div>
 
-        <mat-option [value]="passengersConfig.children">
+        <mat-option [value]="passengersConfig.children" disabled style="pointer-events: auto">
           <app-passengers-count
             [config]="passengersConfig.children"
             [passengers]="passengers"
@@ -92,3 +87,30 @@
     Search
   </button>
 </form>
+
+<ng-template #roundTrip [formGroup]="flightSearchForm">
+  <mat-form-field class="date-picker">
+    <mat-label>Dates</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [min]="minDate">
+      <input matStartDate placeholder="Start date" formControlName="dateFrom" />
+      <input matEndDate placeholder="End date" formControlName="dateTo" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</ng-template>
+
+<ng-template #oneWay [formGroup]="flightSearchForm">
+  <mat-form-field class="date-picker">
+    <mat-label>Date</mat-label>
+    <input
+      matInput
+      placeholder="Choose date"
+      [matDatepicker]="picker"
+      formControlName="dateFrom"
+      [min]="minDate"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</ng-template>
