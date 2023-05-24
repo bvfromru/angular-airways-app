@@ -6,7 +6,8 @@ import { Observable, Subscription, map, startWith } from 'rxjs';
 import { DateInputFormats } from 'src/app/core/models/settings.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { selectAllAirports } from 'src/app/redux/selectors/flights.selectors';
-import { Airport } from 'src/app/redux/state.model';
+import { Airport, SearchFlightsParams } from 'src/app/redux/state.model';
+import * as FlightsActions from '../../../redux/actions/flights.actions';
 
 @Component({
   selector: 'app-flights-selection',
@@ -105,7 +106,16 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
   }
 
   onSubmitForm(): void {
-    console.log(this.flightSearchForm.value);
+    const formData = this.flightSearchForm.value;
+    const searchFlightsParams: SearchFlightsParams = {
+      fromKey: formData.from.key,
+      toKey: formData.to.key,
+      forwardDate: formData.dateFrom.toISOString(),
+    };
+    if (formData.dateTo) {
+      searchFlightsParams.backDate = formData.dateTo.toISOString();
+    }
+    this.store.dispatch(FlightsActions.fetchFlightsStart({ searchFlightsParams }));
   }
 
   onPassengersCountChange(newPassengers: any) {

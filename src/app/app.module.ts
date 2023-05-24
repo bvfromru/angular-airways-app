@@ -5,12 +5,14 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { register } from 'swiper/element/bundle';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainModule } from './main/main.module';
+import { FlightsEffects } from './redux/effects/flights.effects';
 import { flightsReducer } from './redux/reducers/flights.reducer';
 import { DATE_INPUT_DEFAULT_FORMAT } from './shared/constants/constants';
 
@@ -27,6 +29,7 @@ register();
     MatDatepickerModule,
     MatMomentDateModule,
     StoreModule.forRoot({ flights: flightsReducer }),
+    EffectsModule.forRoot([FlightsEffects]),
   ],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: DATE_INPUT_DEFAULT_FORMAT }],
   bootstrap: [AppComponent],

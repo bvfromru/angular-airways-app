@@ -7,7 +7,7 @@ export enum DateFormats {
 
 export enum Currencies {
   eur = 'EUR',
-  usa = 'USD',
+  usd = 'USD',
   rub = 'RUB',
   pln = 'PLN',
 }

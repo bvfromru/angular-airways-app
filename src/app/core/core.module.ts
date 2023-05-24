@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +19,7 @@ import { Page404Component } from './pages/page404/page404.component';
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
+    HttpClientModule,
   ],
   exports: [HeaderComponent, FooterComponent],
 })
