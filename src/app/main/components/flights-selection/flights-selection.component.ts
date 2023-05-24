@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable, Subscription, map, startWith } from 'rxjs';
 import { DateInputFormats } from 'src/app/core/models/settings.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { Airport, airportsList } from '../../pages/main-page/airports-list';
@@ -11,7 +11,7 @@ import { Airport, airportsList } from '../../pages/main-page/airports-list';
   templateUrl: './flights-selection.component.html',
   styleUrls: ['./flights-selection.component.scss'],
 })
-export class FlightsSelectionComponent implements OnInit {
+export class FlightsSelectionComponent implements OnInit, OnDestroy {
   minDate = new Date();
 
   trigger: string;
@@ -23,6 +23,8 @@ export class FlightsSelectionComponent implements OnInit {
   options = airportsList;
 
   filteredOptions: Observable<Airport[]>;
+
+  dateFormatSubscription: Subscription;
 
   passengersConfig = {
     adults: {
@@ -56,10 +58,12 @@ export class FlightsSelectionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.settingsService.currentDateFormat$.subscribe((dateFormat) => {
-      this.trigger = dateFormat;
-      this.dateInputFormat.display.dateInput = dateFormat;
-    });
+    this.dateFormatSubscription = this.settingsService.currentDateFormat$.subscribe(
+      (dateFormat) => {
+        this.trigger = dateFormat;
+        this.dateInputFormat.display.dateInput = dateFormat;
+      },
+    );
 
     this.flightSearchForm = this.formBuilder.group({
       type: [this.flightTypes[0], [Validators.required]],
@@ -85,6 +89,10 @@ export class FlightsSelectionComponent implements OnInit {
         return city ? this._filter(city as string) : this.options.slice();
       }),
     );
+  }
+
+  ngOnDestroy(): void {
+    this.dateFormatSubscription.unsubscribe();
   }
 
   displayFn(airport: Airport): string {

@@ -92,8 +92,8 @@
   <mat-form-field class="date-picker">
     <mat-label>Dates</mat-label>
     <mat-date-range-input [rangePicker]="picker" [min]="minDate">
-      <input matStartDate placeholder="Start date" formControlName="dateFrom" />
-      <input matEndDate placeholder="End date" formControlName="dateTo" />
+      <input matStartDate formControlName="dateFrom" />
+      <input matEndDate formControlName="dateTo" />
     </mat-date-range-input>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
@@ -103,13 +103,7 @@
 <ng-template #oneWay [formGroup]="flightSearchForm">
   <mat-form-field class="date-picker">
     <mat-label>Date</mat-label>
-    <input
-      matInput
-      placeholder="Choose date"
-      [matDatepicker]="picker"
-      formControlName="dateFrom"
-      [min]="minDate"
-    />
+    <input matInput [matDatepicker]="picker" formControlName="dateFrom" [min]="minDate" />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
