@@ -1,13 +1,13 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import { DateInputFormats } from 'src/app/core/models/settings.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { selectAllAirports } from 'src/app/redux/selectors/flights.selectors';
 import { Airport, SearchFlightsParams } from 'src/app/redux/state.model';
-import * as FlightsActions from '../../../redux/actions/flights.actions';
 
 @Component({
   selector: 'app-flights-selection',
@@ -61,6 +61,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
     @Inject(MAT_DATE_FORMATS) public dateInputFormat: DateInputFormats,
     private settingsService: SettingsService,
     private store: Store,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -107,15 +108,27 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
 
   onSubmitForm(): void {
     const formData = this.flightSearchForm.value;
-    const searchFlightsParams: SearchFlightsParams = {
+
+    const queryParams: SearchFlightsParams = {
       fromKey: formData.from.key,
       toKey: formData.to.key,
       forwardDate: formData.dateFrom.toISOString(),
+      passengersNumber: 3,
     };
     if (formData.dateTo) {
-      searchFlightsParams.backDate = formData.dateTo.toISOString();
+      queryParams.backDate = formData.dateTo.toISOString();
     }
-    this.store.dispatch(FlightsActions.fetchFlightsStart({ searchFlightsParams }));
+    this.router.navigate(['flights'], { queryParams });
+
+    // const searchFlightsParams: SearchFlightsParams = {
+    //   fromKey: formData.from.key,
+    //   toKey: formData.to.key,
+    //   forwardDate: formData.dateFrom.toISOString(),
+    // };
+    // if (formData.dateTo) {
+    //   searchFlightsParams.backDate = formData.dateTo.toISOString();
+    // }
+    // this.store.dispatch(FlightsActions.fetchFlightsStart({ searchFlightsParams }));
   }
 
   onPassengersCountChange(newPassengers: any) {

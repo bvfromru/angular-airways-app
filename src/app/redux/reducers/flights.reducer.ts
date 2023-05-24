@@ -17,7 +17,6 @@ export const flightsReducer = createReducer(
     return { ...state, isLoading: true, errorMsg: '' };
   }),
   on(FlightsActions.fetchFlightsSuccess, (state, action): FlightsState => {
-    console.log(state, action);
     return {
       ...state,
       isLoading: false,
@@ -26,7 +25,13 @@ export const flightsReducer = createReducer(
       flightsBack: action.searchFlightsResp[1] ?? null,
     };
   }),
-  on(FlightsActions.fetchFlightsStart, (state, action): FlightsState => {
-    return { ...state, isLoading: false, errorMsg: 'error', flightsTo: null, flightsBack: null };
+  on(FlightsActions.fetchFlightsError, (state, action): FlightsState => {
+    return {
+      ...state,
+      isLoading: false,
+      errorMsg: action.errMessage,
+      flightsTo: null,
+      flightsBack: null,
+    };
   }),
 );

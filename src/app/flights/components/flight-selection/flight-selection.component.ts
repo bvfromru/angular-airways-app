@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Input } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
+import { FlightData, FlightsData, SwiperItem } from 'src/app/redux/state.model';
 import { A11y, Navigation, SwiperOptions } from 'swiper';
 import { SwiperDirective } from '../../directives/swiper.directive';
 import { Direction } from '../../models/flight.models';
-import { flightData } from '../../pages/flights-page/mockFlights';
 
 @Component({
   selector: 'app-flight-selection',
@@ -13,10 +13,12 @@ import { flightData } from '../../pages/flights-page/mockFlights';
   templateUrl: './flight-selection.component.html',
   styleUrls: ['./flight-selection.component.scss'],
 })
-export class FlightSelectionComponent {
+export class FlightSelectionComponent implements OnInit {
   @Input() direction: Direction = 'forward';
 
-  flights = flightData;
+  @Input() flights: FlightsData;
+
+  currentFlight: FlightData;
 
   public config: SwiperOptions = {
     modules: [Navigation, A11y],
@@ -24,7 +26,7 @@ export class FlightSelectionComponent {
     spaceBetween: 0,
     centeredSlides: true,
     // centeredSlidesBounds: true,
-    initialSlide: 2,
+    initialSlide: 5,
     slidesPerView: 3,
     slideToClickedSlide: true,
     navigation: {
@@ -38,9 +40,17 @@ export class FlightSelectionComponent {
     },
   };
 
+  ngOnInit(): void {
+    this.currentFlight = this.flights[5].flights;
+  }
+
+  onFlightClick(flight: SwiperItem) {
+    if (flight.flights) {
+      this.currentFlight = flight.flights;
+    }
+  }
+
   from = 'Dublin';
 
   to = 'Warsaw Modlin';
-
-  sliderItems = flightData;
 }

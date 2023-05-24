@@ -5,22 +5,29 @@
       alt="destinations"
       class="plane-destinations"
     />
-    {{ from }} to {{ to }}
+    {{ flights[5].flights.form.city }} to {{ flights[5].flights.to.city }}
   </div>
   <div class="swiper">
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <swiper-container appSwiper [config]="config" init="false" class="swiper-container">
-      <swiper-slide class="" *ngFor="let flight of flights" class="swiper-slide">
-        <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
-        <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
-        <div class="price">{{ flight.price }}</div>
+      <swiper-slide
+        class=""
+        *ngFor="let flight of flights"
+        class="swiper-slide"
+        (click)="onFlightClick(flight)"
+      >
+        <ng-container
+          [ngTemplateOutlet]="flight.flights ? availableFlight : noFlight"
+          [ngTemplateOutletContext]="{ flight: flight }"
+        >
+        </ng-container>
       </swiper-slide>
     </swiper-container>
   </div>
   <div class="selected-info">
     <div class="selected-details">
-      <div class="from-date">Wed, 1 Mar 2023</div>
+      <div class="from-date">{{ currentFlight.takeoffDate }}</div>
       <div class="flight-duration">2h 50m</div>
       <div class="to-date">Wed, 1 Mar 2023</div>
       <div class="from-time"><span class="time">8:40</span> UTC +0</div>
@@ -44,3 +51,15 @@
     </div>
   </div>
 </div>
+
+<ng-template #availableFlight let-flight="flight">
+  <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
+  <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
+  <div class="price">{{ flight.flights.price.usd.toFixed(2) }}</div>
+</ng-template>
+
+<ng-template #noFlight let-flight="flight">
+  <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
+  <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
+  <div class="price">u</div>
+</ng-template>

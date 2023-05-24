@@ -6,8 +6,8 @@ export interface FlightsState {
   airports: Array<Airport>;
   isLoading: boolean;
   errorMsg: string;
-  flightsTo: FlightsData | null;
-  flightsBack: FlightsData | null;
+  flightsTo: FlightsDataRaw | null;
+  flightsBack: FlightsDataRaw | null;
 }
 
 export interface Airport {
@@ -23,11 +23,31 @@ export interface SearchFlightsParams {
   toKey: string;
   forwardDate: string;
   backDate?: string;
+  passengersNumber?: number;
 }
 
-export type SearchFlightsResponse = [FlightsData, FlightsData?];
-export interface FlightsData extends FlightData {
-  otherFlights: {
+export type SearchFlightsResponse = [FlightsDataRaw, FlightsDataRaw?];
+
+export type FlightsData = [
+  SwiperItem,
+  SwiperItem,
+  SwiperItem,
+  SwiperItem,
+  SwiperItem,
+  { date: Date; flights: FlightData },
+  SwiperItem,
+  SwiperItem,
+  SwiperItem,
+  SwiperItem,
+  SwiperItem,
+];
+
+export interface SwiperItem {
+  date: Date;
+  flights: FlightData | null;
+}
+export interface FlightsDataRaw extends FlightData {
+  otherFlights?: {
     '1'?: FlightData;
     '2'?: FlightData;
     '3'?: FlightData;
@@ -41,7 +61,12 @@ export interface FlightsData extends FlightData {
   };
 }
 
-interface FlightData {
+export interface ErrorMessageResponse {
+  statusCode: number;
+  message: string;
+}
+
+export interface FlightData {
   seats: {
     total: number;
     avaible: number;

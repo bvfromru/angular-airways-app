@@ -1,6 +1,6 @@
-<app-flight-selection direction="backward"></app-flight-selection>
-<app-flight-selection></app-flight-selection>
+<app-flight-selection *ngIf="flightsTo" [flights]="flightsTo"></app-flight-selection>
+<!-- <app-flight-selection direction="backward"></app-flight-selection> -->
 <div class="buttons">
-  <button mat-button type="button" class="back-button">Back</button>
+  <button mat-button type="button" class="back-button" routerLink="/">Back</button>
   <button mat-button type="submit" class="continue-button">Continue</button>
 </div>
