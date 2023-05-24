@@ -1,11 +1,3 @@
-export interface Airport {
-  key: string;
-  name: string;
-  city: string;
-  gmt: string;
-  country: string;
-}
-
 export const airportsList = [
   {
     key: 'AMS',

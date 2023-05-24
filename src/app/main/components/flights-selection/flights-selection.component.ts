@@ -1,10 +1,12 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { Store } from '@ngrx/store';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import { DateInputFormats } from 'src/app/core/models/settings.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
-import { Airport, airportsList } from '../../pages/main-page/airports-list';
+import { selectAllAirports } from 'src/app/redux/selectors/flights.selectors';
+import { Airport } from 'src/app/redux/state.model';
 
 @Component({
   selector: 'app-flights-selection',
@@ -20,11 +22,13 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
 
   flightSearchForm: FormGroup = new FormGroup({});
 
-  options = airportsList;
+  airports$ = this.store.select(selectAllAirports);
+
+  options: Array<Airport>;
 
   filteredOptions: Observable<Airport[]>;
 
-  dateFormatSubscription: Subscription;
+  subscriptions: Subscription;
 
   passengersConfig = {
     adults: {
@@ -55,15 +59,16 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     @Inject(MAT_DATE_FORMATS) public dateInputFormat: DateInputFormats,
     private settingsService: SettingsService,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
-    this.dateFormatSubscription = this.settingsService.currentDateFormat$.subscribe(
-      (dateFormat) => {
-        this.trigger = dateFormat;
-        this.dateInputFormat.display.dateInput = dateFormat;
-      },
-    );
+    this.subscriptions = this.settingsService.currentDateFormat$.subscribe((dateFormat) => {
+      this.trigger = dateFormat;
+      this.dateInputFormat.display.dateInput = dateFormat;
+    });
+
+    this.subscriptions.add(this.airports$.subscribe((airports) => (this.options = airports)));
 
     this.flightSearchForm = this.formBuilder.group({
       type: [this.flightTypes[0], [Validators.required]],
@@ -92,7 +97,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dateFormatSubscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
   displayFn(airport: Airport): string {
