@@ -16,6 +16,7 @@
         *ngFor="let flight of flights"
         class="swiper-slide"
         (click)="onFlightClick(flight)"
+        [ngClass]="{ disabled: !flight.flights }"
       >
         <ng-container
           [ngTemplateOutlet]="flight.flights ? availableFlight : noFlight"
@@ -27,23 +28,29 @@
   </div>
   <div class="selected-info">
     <div class="selected-details">
-      <div class="from-date">{{ currentFlight.takeoffDate }}</div>
-      <div class="flight-duration">2h 50m</div>
-      <div class="to-date">Wed, 1 Mar 2023</div>
-      <div class="from-time"><span class="time">8:40</span> UTC +0</div>
+      <div class="from-date">{{ currentFlight.takeoffDate | date : 'E, d LLL YYYY' }}</div>
+      <div class="flight-duration">{{ currentFlight.timeMins }}</div>
+      <div class="to-date">{{ currentFlight.landingDate | date : 'E, d LLL YYYY' }}</div>
+      <div class="from-time">
+        <span class="time">{{ currentFlight.takeoffDate | date : 'H:mm' }}</span> UTC +0
+      </div>
       <div class="plane"><img src="../../../../assets//svg/plane-route.svg" alt="plane" /></div>
-      <div class="to-time">UTC +1 <span class="time">12:00</span></div>
+      <div class="to-time">
+        UTC +1 <span class="time">{{ currentFlight.landingDate | date : 'H:mm' }}</span>
+      </div>
 
-      <div class="from-city">Dublin</div>
+      <div class="from-city">{{ currentFlight.form.city }}</div>
       <div class="direct">Direct</div>
-      <div class="to-city">Warsaw Modlin</div>
+      <div class="to-city">{{ currentFlight.to.city }}</div>
     </div>
-    <div class="flight-number">Flight no.&nbsp; <span class="number">FR 1925</span></div>
+    <div class="flight-number">
+      Flight no.&nbsp; <span class="number">{{ currentFlight.flightNumber }}</span>
+    </div>
     <div class="selected-price">
       <div class="price-column">
-        <div class="sits-counter">100 seats available</div>
+        <div class="sits-counter">{{ currentFlight.seats.avaible }} seats available</div>
         <div>Price</div>
-        <div class="price-amount">€146.70</div>
+        <div class="price-amount">€{{ currentFlight.price.usd.toFixed(2) }}</div>
       </div>
       <div class="select-column">
         <button type="button">Select</button>
@@ -61,5 +68,5 @@
 <ng-template #noFlight let-flight="flight">
   <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
   <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
-  <div class="price">u</div>
+  <img src="../../../../assets//svg/disabled-flight.svg" alt="n/a" />
 </ng-template>
