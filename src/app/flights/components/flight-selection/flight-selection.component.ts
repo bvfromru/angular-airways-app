@@ -31,6 +31,8 @@ export class FlightSelectionComponent implements OnInit {
 
   currentIndex: number;
 
+  isEditMode = true;
+
   public config: SwiperOptions = {
     modules: [Navigation, A11y],
     autoHeight: false,
@@ -67,6 +69,14 @@ export class FlightSelectionComponent implements OnInit {
       this.currentFlight = flight.flights;
       this.currentIndex = i;
     }
+  }
+
+  onEditBtnClick() {
+    this.isEditMode = true;
+  }
+
+  onSelectBtnClick() {
+    this.isEditMode = false;
   }
 
   from = 'Dublin';

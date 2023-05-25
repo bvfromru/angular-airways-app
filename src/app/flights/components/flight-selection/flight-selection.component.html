@@ -7,7 +7,7 @@
     />
     {{ flights[5].flights.form.city }} to {{ flights[5].flights.to.city }}
   </div>
-  <div class="swiper">
+  <div class="swiper" *ngIf="isEditMode">
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
     <swiper-container appSwiper [config]="config" init="false" class="swiper-container">
@@ -59,11 +59,22 @@
         ></ng-container>
       </div>
       <div class="select-column">
-        <button type="button">Select</button>
+        <button
+          type="button"
+          class="select-button"
+          *ngIf="isEditMode; else editBtn"
+          (click)="onSelectBtnClick()"
+        >
+          Select
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #editBtn>
+  <button type="button" class="edit-button" (click)="onEditBtnClick()">Edit</button>
+</ng-template>
 
 <ng-template #priceAmount let-price="price">
   <div class="price-amount">
