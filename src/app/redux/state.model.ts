@@ -5,7 +5,7 @@ export interface AppState {
 export interface FlightsState {
   airports: Array<Airport>;
   isLoading: boolean;
-  errorMsg: string;
+  errorMsg: string | null;
   flightsTo: FlightsDataRaw | null;
   flightsBack: FlightsDataRaw | null;
 }

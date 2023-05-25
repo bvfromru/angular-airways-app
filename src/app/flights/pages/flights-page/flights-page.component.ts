@@ -3,7 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs';
-import { selectFlightsTo } from 'src/app/redux/selectors/flights.selectors';
+import {
+  selectErrMsg,
+  selectFlightsTo,
+  selectIsLoading,
+} from 'src/app/redux/selectors/flights.selectors';
 import { FlightsData, SearchFlightsParams } from 'src/app/redux/state.model';
 import * as FlightsActions from '../../../redux/actions/flights.actions';
 
@@ -18,6 +22,10 @@ const addDaysToDate = (date: Date, days: number) => {
 })
 export class FlightsComponent implements OnInit, OnDestroy {
   flightsTo$ = this.store.select(selectFlightsTo);
+
+  isLoading$ = this.store.select(selectIsLoading);
+
+  errMsg$ = this.store.select(selectErrMsg);
 
   flightsTo: FlightsData | null = null;
 

@@ -6,7 +6,7 @@ import { FlightsState } from '../state.model';
 const initialState: FlightsState = {
   airports: airportsList,
   isLoading: false,
-  errorMsg: '',
+  errorMsg: null,
   flightsTo: null,
   flightsBack: null,
 };
@@ -14,13 +14,13 @@ const initialState: FlightsState = {
 export const flightsReducer = createReducer(
   initialState,
   on(FlightsActions.fetchFlightsStart, (state): FlightsState => {
-    return { ...state, isLoading: true, errorMsg: '' };
+    return { ...state, isLoading: true, errorMsg: null };
   }),
   on(FlightsActions.fetchFlightsSuccess, (state, action): FlightsState => {
     return {
       ...state,
       isLoading: false,
-      errorMsg: '',
+      errorMsg: null,
       flightsTo: action.searchFlightsResp[0],
       flightsBack: action.searchFlightsResp[1] ?? null,
     };
