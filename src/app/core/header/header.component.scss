@@ -1,16 +1,23 @@
 .mat-toolbar {
   height: 88px;
-  background-color: rgba(116, 118, 122, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--white);
+  background-color: var(--white);
+
+  &.main-page {
+    background-color: rgba(116, 118, 122, 0.2);
+  }
 
   @media (max-width: 900px) {
     min-height: 160px;
     height: auto;
     padding: 20px;
   }
+}
+
+.main-page {
 }
 
 .header-container {
@@ -57,9 +64,13 @@
 
   .header-breadcrumbs {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
     .header-page-info {
       text-align: right;
+      margin-right: 20px;
     }
   }
 
@@ -99,7 +110,6 @@
       font-family: 'Roboto';
       font-weight: 500;
       font-size: 16px;
-      color: var(--white);
       line-height: 20px;
       min-width: 114px;
     }
@@ -108,5 +118,18 @@
       display: flex;
       justify-content: center;
     }
+  }
+}
+
+::ng-deep .mat-mdc-select-value,
+.auth-btn {
+  color: var(--neutral-10);
+}
+
+.main-page {
+  ::ng-deep .mat-mdc-select-value,
+  ::ng-deep .mat-mdc-select-trigger .mat-mdc-select-arrow,
+  .auth-btn {
+    color: var(--white);
   }
 }

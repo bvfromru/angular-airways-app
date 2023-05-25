@@ -24,6 +24,12 @@ export const SEATS_COLOR_RANGE = {
   high: 200,
 };
 
+export const APP_ROUTES = {
+  mainPage: '',
+  booking: 'flights',
+  notFound: '404',
+};
+
 export const API_ENDPOINTS = {
   baseUrl: 'https://api.air-ways.online/',
   flightsSearch: 'search/flight',
