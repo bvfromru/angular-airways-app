@@ -19,7 +19,7 @@ import { Direction } from '../../models/flight.models';
   styleUrls: ['./flight-selection.component.scss'],
 })
 export class FlightSelectionComponent implements OnInit {
-  @Input() direction: Direction = 'forward';
+  @Input() direction: Direction;
 
   @Input() flights: FlightsData;
 
@@ -33,35 +33,40 @@ export class FlightSelectionComponent implements OnInit {
 
   isEditMode = true;
 
-  public config: SwiperOptions = {
-    modules: [Navigation, A11y],
-    autoHeight: false,
-    spaceBetween: 0,
-    centeredSlides: true,
-    centeredSlidesBounds: true,
-    initialSlide: 5,
-    slidesPerView: 3,
-    slideToClickedSlide: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      600: {
-        slidesPerView: 5,
-      },
-    },
-  };
+  modules = [Navigation, A11y];
+
+  public config: SwiperOptions;
 
   constructor(public settingsService: SettingsService) {}
 
   ngOnInit(): void {
+    console.log(this.config);
     this.currentIndex = Math.floor(this.flights.length / 2);
     this.currentFlight = this.flights[5].flights;
 
     this.subscriptions = this.settingsService.currentCurrency$.subscribe(
       (currentCurrencyObj) => (this.currentCurrency = currentCurrencyObj),
     );
+
+    this.config = {
+      modules: this.modules,
+      autoHeight: false,
+      spaceBetween: 0,
+      centeredSlides: true,
+      centeredSlidesBounds: true,
+      initialSlide: 5,
+      slidesPerView: 3,
+      slideToClickedSlide: true,
+      navigation: {
+        nextEl: `.swiper-button-next-${this.direction}`,
+        prevEl: `.swiper-button-prev-${this.direction}`,
+      },
+      breakpoints: {
+        600: {
+          slidesPerView: 5,
+        },
+      },
+    };
   }
 
   onFlightClick(flight: SwiperItem, i: number) {

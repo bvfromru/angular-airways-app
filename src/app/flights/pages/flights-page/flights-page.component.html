@@ -4,6 +4,7 @@
 </div>
 <ng-container *ngIf="(isLoading$ | async) === false && (errMsg$ | async) === null">
   <app-flight-selection
+    direction="forward"
     *ngIf="flightsTo$ | async as flightsTo"
     [flights]="flightsTo"
   ></app-flight-selection>

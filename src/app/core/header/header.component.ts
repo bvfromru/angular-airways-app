@@ -23,7 +23,6 @@ export class HeaderComponent {
   constructor(public settingsService: SettingsService, private router: Router) {
     router.events.subscribe((v) => {
       if (v instanceof NavigationEnd) {
-        console.log(v);
         this.isMainPage = v.url === '/';
         if (v.url.includes(APP_ROUTES.booking)) {
           this.step = 1;

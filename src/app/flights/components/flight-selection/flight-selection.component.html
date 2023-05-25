@@ -8,8 +8,8 @@
     {{ flights[5].flights.form.city }} to {{ flights[5].flights.to.city }}
   </div>
   <div class="swiper" *ngIf="isEditMode">
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div [className]="'swiper-button-prev swiper-button-prev-' + direction"></div>
+    <div [className]="'swiper-button-next swiper-button-next-' + direction"></div>
     <swiper-container appSwiper [config]="config" init="false" class="swiper-container">
       <swiper-slide
         class=""
