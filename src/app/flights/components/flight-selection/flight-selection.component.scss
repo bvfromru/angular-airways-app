@@ -95,7 +95,7 @@
   color: #11397e;
 }
 
-.swiper-slide-active {
+.swiper-slide.selected {
   &.green {
     border-bottom: 4px solid #33f150;
   }

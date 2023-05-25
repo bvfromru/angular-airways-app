@@ -29,12 +29,14 @@ export class FlightSelectionComponent implements OnInit {
 
   subscriptions: Subscription;
 
+  currentIndex: number;
+
   public config: SwiperOptions = {
     modules: [Navigation, A11y],
     autoHeight: false,
     spaceBetween: 0,
     centeredSlides: true,
-    // centeredSlidesBounds: true,
+    centeredSlidesBounds: true,
     initialSlide: 5,
     slidesPerView: 3,
     slideToClickedSlide: true,
@@ -52,6 +54,7 @@ export class FlightSelectionComponent implements OnInit {
   constructor(public settingsService: SettingsService) {}
 
   ngOnInit(): void {
+    this.currentIndex = Math.floor(this.flights.length / 2);
     this.currentFlight = this.flights[5].flights;
 
     this.subscriptions = this.settingsService.currentCurrency$.subscribe(
@@ -59,9 +62,10 @@ export class FlightSelectionComponent implements OnInit {
     );
   }
 
-  onFlightClick(flight: SwiperItem) {
+  onFlightClick(flight: SwiperItem, i: number) {
     if (flight.flights) {
       this.currentFlight = flight.flights;
+      this.currentIndex = i;
     }
   }
 

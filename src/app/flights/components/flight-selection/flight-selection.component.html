@@ -13,10 +13,10 @@
     <swiper-container appSwiper [config]="config" init="false" class="swiper-container">
       <swiper-slide
         class=""
-        *ngFor="let flight of flights"
+        *ngFor="let flight of flights; let i = index"
         class="swiper-slide"
-        (click)="onFlightClick(flight)"
-        [ngClass]="{ disabled: !flight.flights }"
+        (click)="onFlightClick(flight, i)"
+        [ngClass]="{ disabled: !flight.flights, selected: i === currentIndex }"
         [appColormark]="flight.flights ? flight.flights.seats.avaible : 0"
       >
         <ng-container
