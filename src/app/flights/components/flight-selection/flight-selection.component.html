@@ -17,6 +17,7 @@
         class="swiper-slide"
         (click)="onFlightClick(flight)"
         [ngClass]="{ disabled: !flight.flights }"
+        [appColormark]="flight.flights ? flight.flights.seats.avaible : 0"
       >
         <ng-container
           [ngTemplateOutlet]="flight.flights ? availableFlight : noFlight"
@@ -48,7 +49,9 @@
     </div>
     <div class="selected-price">
       <div class="price-column">
-        <div class="sits-counter">{{ currentFlight.seats.avaible }} seats available</div>
+        <div class="seats-counter" [appColormark]="currentFlight.seats.avaible">
+          {{ currentFlight.seats.avaible }} seats available
+        </div>
         <div>Price</div>
         <ng-container
           [ngTemplateOutlet]="priceAmount"

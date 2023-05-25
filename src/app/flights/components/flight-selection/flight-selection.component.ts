@@ -6,6 +6,7 @@ import { SettingsService } from 'src/app/core/services/settings.service';
 import { FlightData, FlightsData, SwiperItem } from 'src/app/redux/state.model';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { A11y, Navigation, SwiperOptions } from 'swiper';
+import { ColormarkDirective } from '../../directives/colormark.directive';
 import { SwiperDirective } from '../../directives/swiper.directive';
 import { Direction } from '../../models/flight.models';
 
@@ -13,7 +14,7 @@ import { Direction } from '../../models/flight.models';
   selector: 'app-flight-selection',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [SwiperDirective, CommonModule, SharedModule],
+  imports: [SwiperDirective, CommonModule, SharedModule, ColormarkDirective],
   templateUrl: './flight-selection.component.html',
   styleUrls: ['./flight-selection.component.scss'],
 })

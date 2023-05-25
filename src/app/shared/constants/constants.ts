@@ -18,3 +18,8 @@ export const CURRENCIES = {
   rub: { name: 'rub', sign: '₽' },
   pln: { name: 'pln', sign: 'zł' },
 };
+
+export const SEATS_COLOR_RANGE = {
+  low: 100,
+  high: 200,
+};

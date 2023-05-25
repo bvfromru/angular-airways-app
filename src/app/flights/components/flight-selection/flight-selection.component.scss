@@ -96,7 +96,17 @@
 }
 
 .swiper-slide-active {
-  border-bottom: 4px solid #f1c933;
+  &.green {
+    border-bottom: 4px solid #33f150;
+  }
+
+  &.yellow {
+    border-bottom: 4px solid #f1c933;
+  }
+
+  &.red {
+    border-bottom: 4px solid #b3261e;
+  }
 
   .date {
     font-weight: 700;
@@ -246,15 +256,26 @@
     justify-content: space-between;
     padding: 0 10px;
 
-    .sits-counter {
+    .seats-counter {
       font-weight: 700;
       font-size: 12px;
       line-height: 16px;
       text-align: right;
       color: #454a53;
-      background: rgba(241, 201, 51, 0.3);
       border-radius: 2px;
       padding: 4px 4px 4px 30px;
+
+      &.green {
+        background: rgba(51, 241, 67, 0.3);
+      }
+
+      &.yellow {
+        background: rgba(241, 201, 51, 0.3);
+      }
+
+      &.red {
+        background: rgba(179, 38, 30, 0.3);
+      }
     }
 
     .price-amount {
