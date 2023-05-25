@@ -77,12 +77,14 @@ export interface FlightData {
   to: Destination;
   takeoffDate: string;
   landingDate: string;
-  price: {
-    eur: number;
-    usd: number;
-    rub: number;
-    pln: number;
-  };
+  price: Price;
+}
+
+interface Price {
+  eur: number;
+  usd: number;
+  rub: number;
+  pln: number;
 }
 
 interface Destination {

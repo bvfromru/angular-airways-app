@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Currencies, DateFormats } from 'src/app/core/models/settings.model';
+import { Currency, DateFormats } from 'src/app/core/models/settings.model';
+import { CURRENCIES } from 'src/app/shared/constants/constants';
 import { SettingsService } from '../services/settings.service';
 
 @Component({
@@ -10,11 +11,9 @@ import { SettingsService } from '../services/settings.service';
 export class HeaderComponent {
   currentDateFormat = DateFormats.mdy;
 
-  currentCurrency = Currencies.eur;
-
   dateFormats = Object.values(DateFormats);
 
-  currencies = Object.values(Currencies);
+  currencies = Object.values(CURRENCIES);
 
   constructor(public settingsService: SettingsService) {}
 
@@ -22,7 +21,7 @@ export class HeaderComponent {
     this.settingsService.setCurrentDateFormat(newDateFormat);
   }
 
-  onCurrencyChanged(newCurrency: Currencies) {
+  onCurrencyChanged(newCurrency: Currency) {
     this.settingsService.setCurrentCurrency(newCurrency);
   }
 }

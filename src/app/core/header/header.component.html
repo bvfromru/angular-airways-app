@@ -25,7 +25,7 @@
           hideSingleSelectionIndicator="true"
         >
           <mat-option *ngFor="let currency of currencies" [value]="currency">
-            {{ currency }}
+            {{ currency.name | uppercase }}
           </mat-option>
         </mat-select>
 

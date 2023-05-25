@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Currency } from 'src/app/core/models/settings.model';
+import { SettingsService } from 'src/app/core/services/settings.service';
 import { FlightData, FlightsData, SwiperItem } from 'src/app/redux/state.model';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { A11y, Navigation, SwiperOptions } from 'swiper';
@@ -21,6 +24,10 @@ export class FlightSelectionComponent implements OnInit {
 
   currentFlight: FlightData;
 
+  currentCurrency: Currency;
+
+  subscriptions: Subscription;
+
   public config: SwiperOptions = {
     modules: [Navigation, A11y],
     autoHeight: false,
@@ -41,8 +48,14 @@ export class FlightSelectionComponent implements OnInit {
     },
   };
 
+  constructor(public settingsService: SettingsService) {}
+
   ngOnInit(): void {
     this.currentFlight = this.flights[5].flights;
+
+    this.subscriptions = this.settingsService.currentCurrency$.subscribe(
+      (currentCurrencyObj) => (this.currentCurrency = currentCurrencyObj),
+    );
   }
 
   onFlightClick(flight: SwiperItem) {

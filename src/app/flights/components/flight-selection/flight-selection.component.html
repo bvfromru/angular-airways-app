@@ -50,7 +50,10 @@
       <div class="price-column">
         <div class="sits-counter">{{ currentFlight.seats.avaible }} seats available</div>
         <div>Price</div>
-        <div class="price-amount">€{{ currentFlight.price.usd.toFixed(2) }}</div>
+        <ng-container
+          [ngTemplateOutlet]="priceAmount"
+          [ngTemplateOutletContext]="{ price: currentFlight.price }"
+        ></ng-container>
       </div>
       <div class="select-column">
         <button type="button">Select</button>
@@ -59,10 +62,18 @@
   </div>
 </div>
 
+<ng-template #priceAmount let-price="price">
+  <div class="price-amount">
+    {{ currentCurrency.sign }}{{ price[currentCurrency.name].toFixed(2) }}
+  </div>
+</ng-template>
+
 <ng-template #availableFlight let-flight="flight">
   <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
   <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
-  <div class="price">{{ flight.flights.price.usd.toFixed(2) }}</div>
+  <div class="price">
+    {{ currentCurrency.sign }}{{ flight.flights.price[currentCurrency.name].toFixed(2) }}
+  </div>
 </ng-template>
 
 <ng-template #noFlight let-flight="flight">

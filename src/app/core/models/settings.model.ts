@@ -4,12 +4,15 @@ export enum DateFormats {
   ydm = 'YYYY-DD-MM',
   ymd = 'YYYY-MM-DD',
 }
-
-export enum Currencies {
-  eur = 'EUR',
-  usd = 'USD',
-  rub = 'RUB',
-  pln = 'PLN',
+export interface Currency {
+  name: string;
+  sign: string;
+}
+export interface Currencies {
+  eur: Currency;
+  usd: Currency;
+  rub: Currency;
+  pln: Currency;
 }
 
 export interface DateInputFormats {

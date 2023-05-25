@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Currencies, DateFormats } from 'src/app/core/models/settings.model';
+import { Currency, DateFormats } from 'src/app/core/models/settings.model';
+import { CURRENCIES } from 'src/app/shared/constants/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { Currencies, DateFormats } from 'src/app/core/models/settings.model';
 export class SettingsService {
   private currentDateFormat$$ = new BehaviorSubject<DateFormats>(DateFormats.mdy);
 
-  private currentCurrency$$ = new BehaviorSubject<Currencies>(Currencies.eur);
+  private currentCurrency$$ = new BehaviorSubject<Currency>(CURRENCIES.eur);
 
   public currentDateFormat$ = this.currentDateFormat$$.asObservable();
 
@@ -18,7 +19,7 @@ export class SettingsService {
     this.currentDateFormat$$.next(val);
   }
 
-  setCurrentCurrency(val: Currencies) {
+  setCurrentCurrency(val: Currency) {
     this.currentCurrency$$.next(val);
   }
 }

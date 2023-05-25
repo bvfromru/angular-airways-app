@@ -11,3 +11,10 @@ export const DATE_INPUT_DEFAULT_FORMAT: DateInputFormats = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
+export const CURRENCIES = {
+  eur: { name: 'eur', sign: '€' },
+  usd: { name: 'usd', sign: '$' },
+  rub: { name: 'rub', sign: '₽' },
+  pln: { name: 'pln', sign: 'zł' },
+};
