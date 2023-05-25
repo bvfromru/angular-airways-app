@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
 import { FlightData, FlightsData, SwiperItem } from 'src/app/redux/state.model';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { A11y, Navigation, SwiperOptions } from 'swiper';
 import { SwiperDirective } from '../../directives/swiper.directive';
 import { Direction } from '../../models/flight.models';
@@ -9,7 +10,7 @@ import { Direction } from '../../models/flight.models';
   selector: 'app-flight-selection',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [SwiperDirective, CommonModule],
+  imports: [SwiperDirective, CommonModule, SharedModule],
   templateUrl: './flight-selection.component.html',
   styleUrls: ['./flight-selection.component.scss'],
 })

@@ -29,7 +29,7 @@
   <div class="selected-info">
     <div class="selected-details">
       <div class="from-date">{{ currentFlight.takeoffDate | date : 'E, d LLL YYYY' }}</div>
-      <div class="flight-duration">{{ currentFlight.timeMins }}</div>
+      <div class="flight-duration">{{ currentFlight.timeMins | durationTime }}</div>
       <div class="to-date">{{ currentFlight.landingDate | date : 'E, d LLL YYYY' }}</div>
       <div class="from-time">
         <span class="time">{{ currentFlight.takeoffDate | date : 'H:mm' }}</span> UTC +0
