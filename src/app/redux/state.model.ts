@@ -6,8 +6,8 @@ export interface FlightsState {
   airports: Array<Airport>;
   isLoading: boolean;
   errorMsg: string | null;
-  flightsTo: FlightsDataRaw | null;
-  flightsBack: FlightsDataRaw | null;
+  flightsTo: FlightsData | null;
+  flightsBack: FlightsData | null;
 }
 
 export interface Airport {
@@ -27,6 +27,8 @@ export interface SearchFlightsParams {
 }
 
 export type SearchFlightsResponse = [FlightsDataRaw, FlightsDataRaw?];
+
+export type SearchFlightsTransformedResponse = [FlightsData?, FlightsData?];
 
 export type FlightsData = [
   SwiperItem,

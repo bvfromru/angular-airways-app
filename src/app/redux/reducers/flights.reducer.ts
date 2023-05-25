@@ -21,7 +21,7 @@ export const flightsReducer = createReducer(
       ...state,
       isLoading: false,
       errorMsg: null,
-      flightsTo: action.searchFlightsResp[0],
+      flightsTo: action.searchFlightsResp[0] ?? null,
       flightsBack: action.searchFlightsResp[1] ?? null,
     };
   }),

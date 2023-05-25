@@ -23,3 +23,8 @@ export const SEATS_COLOR_RANGE = {
   low: 100,
   high: 200,
 };
+
+export const API_ENDPOINTS = {
+  baseUrl: 'https://api.air-ways.online/',
+  flightsSearch: 'search/flight',
+};

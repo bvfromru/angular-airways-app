@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { SearchFlightsParams, SearchFlightsResponse } from '../state.model';
+import { SearchFlightsParams, SearchFlightsTransformedResponse } from '../state.model';
 
 export const getAllAirports = createAction('[FLIGHTS] Get All Airports');
 
@@ -10,7 +10,7 @@ export const fetchFlightsStart = createAction(
 
 export const fetchFlightsSuccess = createAction(
   '[FLIGHTS] Fetch Flights Success',
-  props<{ searchFlightsResp: SearchFlightsResponse }>(),
+  props<{ searchFlightsResp: SearchFlightsTransformedResponse }>(),
 );
 
 export const fetchFlightsError = createAction(
