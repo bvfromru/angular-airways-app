@@ -9,9 +9,10 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { StepperComponent } from './header/stepper/stepper.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, Page404Component],
+  declarations: [HeaderComponent, FooterComponent, Page404Component, StepperComponent],
   imports: [
     CommonModule,
     MatToolbarModule,

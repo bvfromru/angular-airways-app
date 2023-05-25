@@ -1,0 +1,42 @@
+<div class="stepper-wrapper">
+  <div class="stepper-item">
+    <div class="stepper-icon" [ngClass]="{ active: step >= 1 }">
+      <ng-container
+        [ngTemplateOutlet]="step >= 1 ? (step > 1 ? checked : pencil) : number"
+        [ngTemplateOutletContext]="{ stepNumber: 1 }"
+      >
+      </ng-container>
+    </div>
+    Flights
+  </div>
+  <div class="stepper-item">
+    <div class="stepper-icon" [ngClass]="{ active: step >= 2 }">
+      <ng-container
+        [ngTemplateOutlet]="step >= 2 ? (step > 2 ? checked : pencil) : number"
+        [ngTemplateOutletContext]="{ stepNumber: 2 }"
+      >
+      </ng-container>
+    </div>
+    Passengers
+  </div>
+  <div class="stepper-item">
+    <div class="stepper-icon" [ngClass]="{ active: step >= 3 }">
+      <ng-container
+        [ngTemplateOutlet]="step >= 3 ? (step > 3 ? checked : pencil) : number"
+        [ngTemplateOutletContext]="{ stepNumber: 3 }"
+      >
+      </ng-container>
+    </div>
+    Review & Payment
+  </div>
+</div>
+
+<ng-template #pencil>
+  <img src="../../../../assets/svg/pencil-icon.svg" alt="pencil" />
+</ng-template>
+
+<ng-template #checked>
+  <img src="../../../../assets/svg/checked-icon.svg" alt="checked" />
+</ng-template>
+
+<ng-template #number let-stepNumber="stepNumber"> {{ stepNumber }}</ng-template>

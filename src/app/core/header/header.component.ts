@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Currency, DateFormats } from 'src/app/core/models/settings.model';
-import { CURRENCIES } from 'src/app/shared/constants/constants';
+import { APP_ROUTES, CURRENCIES } from 'src/app/shared/constants/constants';
 import { SettingsService } from '../services/settings.service';
 
 @Component({
@@ -16,12 +16,18 @@ export class HeaderComponent {
 
   currencies = Object.values(CURRENCIES);
 
-  currentRoute: string;
+  isMainPage: boolean;
+
+  step: number;
 
   constructor(public settingsService: SettingsService, private router: Router) {
     router.events.subscribe((v) => {
       if (v instanceof NavigationEnd) {
-        this.currentRoute = v.url;
+        console.log(v);
+        this.isMainPage = v.url === '/';
+        if (v.url.includes(APP_ROUTES.booking)) {
+          this.step = 1;
+        }
       }
     });
   }
