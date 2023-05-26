@@ -8,8 +8,22 @@ export interface FlightsState {
   errorMsg: string | null;
   flightsTo: FlightsData | null;
   flightsBack: FlightsData | null;
+  passengers: Passengers | null;
 }
 
+export interface CurrentFlight {
+  from: string;
+  to: string;
+  takeoffDate: string;
+  backDate?: string;
+  passengers: Passengers | null;
+}
+
+export interface Passengers {
+  adults: number;
+  children: number;
+  infants: number;
+}
 export interface Airport {
   key: string;
   name: string;

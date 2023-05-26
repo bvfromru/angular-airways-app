@@ -9,6 +9,7 @@ const initialState: FlightsState = {
   errorMsg: null,
   flightsTo: null,
   flightsBack: null,
+  passengers: null,
 };
 
 export const flightsReducer = createReducer(

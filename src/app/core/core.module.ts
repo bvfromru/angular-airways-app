@@ -6,10 +6,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { Page404Component } from './pages/page404/page404.component';
 import { StepperComponent } from './header/stepper/stepper.component';
+import { Page404Component } from './pages/page404/page404.component';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, Page404Component, StepperComponent],
@@ -21,6 +22,7 @@ import { StepperComponent } from './header/stepper/stepper.component';
     MatSelectModule,
     MatIconModule,
     HttpClientModule,
+    SharedModule,
   ],
   exports: [HeaderComponent, FooterComponent],
 })

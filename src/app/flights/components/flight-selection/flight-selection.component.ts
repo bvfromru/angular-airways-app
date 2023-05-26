@@ -40,7 +40,6 @@ export class FlightSelectionComponent implements OnInit {
   constructor(public settingsService: SettingsService) {}
 
   ngOnInit(): void {
-    console.log(this.config);
     this.currentIndex = Math.floor(this.flights.length / 2);
     this.currentFlight = this.flights[5].flights;
 

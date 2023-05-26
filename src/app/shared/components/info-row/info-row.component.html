@@ -1,0 +1,32 @@
+<div class="info-row-wrapper">
+  <div class="wrapper">
+    <div class="info-row-container">
+      <div class="destinations">
+        {{ currentFlight.from }}
+        <img src="../../../../assets/svg/current-flight-icon.svg" alt="-" />
+        {{ currentFlight.to }}
+      </div>
+      <div class="dates">
+        <div class="flight-type">{{ currentFlight.backDate ? 'Return' : 'No return' }}</div>
+        <div class="flight-time bullet">
+          {{ currentFlight.takeoffDate | date : 'd MMM' }}
+          <span *ngIf="currentFlight.backDate">
+            -
+            {{ currentFlight.backDate | date : 'd MMM' }}
+          </span>
+        </div>
+        <div class="passengers bullet">
+          <div>
+            {{
+              (currentFlight.passengers?.adults ?? 0) +
+                (currentFlight.passengers?.children ?? 0) +
+                (currentFlight.passengers?.infants ?? 0)
+            }}
+            <img src="../../../../assets/svg/person.svg" alt="p" />
+          </div>
+        </div>
+      </div>
+      <button type="button" class="edit-btn">Edit</button>
+    </div>
+  </div>
+</div>

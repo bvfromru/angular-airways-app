@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Currency, DateFormats } from 'src/app/core/models/settings.model';
+import { selectCurrentFlight } from 'src/app/redux/selectors/flights.selectors';
 import { APP_ROUTES, CURRENCIES } from 'src/app/shared/constants/constants';
 import { SettingsService } from '../services/settings.service';
 
@@ -20,7 +22,13 @@ export class HeaderComponent {
 
   step: number;
 
-  constructor(public settingsService: SettingsService, private router: Router) {
+  currentFlight$ = this.store.select(selectCurrentFlight);
+
+  constructor(
+    public settingsService: SettingsService,
+    private router: Router,
+    private store: Store,
+  ) {
     router.events.subscribe((v) => {
       if (v instanceof NavigationEnd) {
         this.isMainPage = v.url === '/';

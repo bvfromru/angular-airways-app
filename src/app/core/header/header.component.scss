@@ -10,14 +10,11 @@
     background-color: rgba(116, 118, 122, 0.2);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1040px) {
     min-height: 160px;
     height: auto;
     padding: 20px;
   }
-}
-
-.main-page {
 }
 
 .header-container {
@@ -25,9 +22,9 @@
   justify-content: center;
   gap: 30px;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1040px) {
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
   }
 
   .header-input,

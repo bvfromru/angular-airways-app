@@ -67,3 +67,6 @@
     </div>
   </div>
 </mat-toolbar>
+<ng-container *ngIf="!isMainPage">
+  <app-info-row *ngIf="currentFlight$ | async as cF" [currentFlight]="cF"></app-info-row>
+</ng-container>
