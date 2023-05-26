@@ -19,22 +19,42 @@
 
     <mat-form-field>
       <mat-label>From</mat-label>
-      <input type="text" matInput formControlName="from" [matAutocomplete]="auto" />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
-          <div class="option-description">{{ option.name }}</div>
+      <input
+        type="text"
+        matInput
+        formControlName="from"
+        [matAutocomplete]="from"
+        placeholder="Choose your departure airport"
+      />
+      <mat-autocomplete #from="matAutocomplete" [displayWith]="displayFn">
+        <mat-option
+          *ngFor="let optionFrom of filteredOptionsFrom$ | async"
+          [value]="optionFrom"
+          [disabled]="optionFrom === controlTo?.value"
+        >
+          <div class="option-heading">{{ optionFrom.city }} ({{ optionFrom.key }})</div>
+          <div class="option-description">{{ optionFrom.name }}</div>
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Destination</mat-label>
-      <input type="text" matInput formControlName="to" [matAutocomplete]="auto" />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          <div class="option-heading">{{ option.city }} ({{ option.key }})</div>
-          <div class="option-description">{{ option.name }}</div>
+      <input
+        type="text"
+        matInput
+        formControlName="to"
+        [matAutocomplete]="to"
+        placeholder="Choose your destination"
+      />
+      <mat-autocomplete #to="matAutocomplete" [displayWith]="displayFn">
+        <mat-option
+          *ngFor="let optionTo of filteredOptionsTo$ | async"
+          [value]="optionTo"
+          [disabled]="optionTo === controlFrom?.value"
+        >
+          <div class="option-heading">{{ optionTo.city }} ({{ optionTo.key }})</div>
+          <div class="option-description">{{ optionTo.name }}</div>
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

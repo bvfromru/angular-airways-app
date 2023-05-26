@@ -28,7 +28,9 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
 
   options: Array<Airport>;
 
-  filteredOptions: Observable<Airport[]>;
+  filteredOptionsFrom$: Observable<Airport[]>;
+
+  filteredOptionsTo$: Observable<Airport[]>;
 
   subscriptions: Subscription;
 
@@ -81,7 +83,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
     });
 
     const formControlFrom = this.flightSearchForm.get('from');
-    this.filteredOptions = formControlFrom!.valueChanges.pipe(
+    this.filteredOptionsFrom$ = formControlFrom!.valueChanges.pipe(
       startWith(''),
       map((value) => {
         const city = typeof value === 'string' ? value : value?.city;
@@ -89,7 +91,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
       }),
     );
     const formControlTo = this.flightSearchForm.get('to');
-    this.filteredOptions = formControlTo!.valueChanges.pipe(
+    this.filteredOptionsTo$ = formControlTo!.valueChanges.pipe(
       startWith(''),
       map((value) => {
         const city = typeof value === 'string' ? value : value?.city;
@@ -144,5 +146,13 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
   private _filter(city: string): Airport[] {
     const filterValue = city.toLowerCase();
     return this.options.filter((option) => option.city.toLowerCase().includes(filterValue));
+  }
+
+  get controlFrom() {
+    return this.flightSearchForm.get('from');
+  }
+
+  get controlTo() {
+    return this.flightSearchForm.get('to');
   }
 }
