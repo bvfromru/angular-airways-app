@@ -17,11 +17,7 @@
         </div>
         <div class="passengers bullet">
           <div>
-            {{
-              (currentFlight.passengers?.adults ?? 0) +
-                (currentFlight.passengers?.children ?? 0) +
-                (currentFlight.passengers?.infants ?? 0)
-            }}
+            {{ totalCount }}
             <img src="../../../../assets/svg/person.svg" alt="p" />
           </div>
         </div>

@@ -99,9 +99,11 @@
   }
 }
 
-.passengers-select {
-  .passengers-trigger {
-    color: var(--neutral-0);
-    text-overflow: ellipsis;
-  }
+.passengers-input {
+  color: var(--black);
+  text-overflow: ellipsis;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  padding: 20px !important;
 }

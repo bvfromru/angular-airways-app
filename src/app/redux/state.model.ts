@@ -38,6 +38,9 @@ export interface SearchFlightsParams {
   forwardDate: string;
   backDate?: string;
   passengersNumber?: number;
+  adultCount: number;
+  childCount: number;
+  infantCount: number;
 }
 
 export type SearchFlightsResponse = [FlightsDataRaw, FlightsDataRaw?];

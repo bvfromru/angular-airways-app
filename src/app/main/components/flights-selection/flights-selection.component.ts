@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
@@ -53,7 +54,6 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
     adults: 1,
     children: 0,
     infants: 0,
-    sum: 1,
   };
 
   constructor(
@@ -113,27 +113,22 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
       fromKey: formData.from.key,
       toKey: formData.to.key,
       forwardDate: formData.dateFrom.toISOString(),
-      passengersNumber: 3,
+      adultCount: this.passengers.adults,
+      childCount: this.passengers.children,
+      infantCount: this.passengers.infants,
     };
     if (formData.dateTo) {
       queryParams.backDate = formData.dateTo.toISOString();
     }
     this.router.navigate(['flights'], { queryParams });
-
-    // const searchFlightsParams: SearchFlightsParams = {
-    //   fromKey: formData.from.key,
-    //   toKey: formData.to.key,
-    //   forwardDate: formData.dateFrom.toISOString(),
-    // };
-    // if (formData.dateTo) {
-    //   searchFlightsParams.backDate = formData.dateTo.toISOString();
-    // }
-    // this.store.dispatch(FlightsActions.fetchFlightsStart({ searchFlightsParams }));
   }
 
   onPassengersCountChange(newPassengers: any) {
     this.passengers = { ...newPassengers };
-    // this.trigger = JSON.stringify(newPassengers);
+  }
+
+  getPassengersValue() {
+    return `${this.passengers.adults} Adult, ${this.passengers.children} Child, ${this.passengers.infants} Infant`;
   }
 
   get isRoundTrip() {

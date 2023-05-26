@@ -27,7 +27,7 @@ export class PassengersCountComponent {
     } else if (action === 'remove') {
       switch (passenger) {
         case 'Adult':
-          if (this.passengers.adults > 0) {
+          if (this.passengers.adults > 1) {
             this.passengers.adults -= 1;
           }
           break;

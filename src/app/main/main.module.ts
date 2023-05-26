@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxRerenderModule } from 'ngx-rerender';
@@ -30,6 +31,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     MatIconModule,
     MatButtonModule,
     NgxRerenderModule,
+    MatMenuModule,
   ],
 })
 export class MainModule {}

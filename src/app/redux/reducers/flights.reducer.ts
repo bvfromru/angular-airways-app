@@ -14,8 +14,17 @@ const initialState: FlightsState = {
 
 export const flightsReducer = createReducer(
   initialState,
-  on(FlightsActions.fetchFlightsStart, (state): FlightsState => {
-    return { ...state, isLoading: true, errorMsg: null };
+  on(FlightsActions.fetchFlightsStart, (state, action): FlightsState => {
+    return {
+      ...state,
+      isLoading: true,
+      errorMsg: null,
+      passengers: {
+        adults: action.searchFlightsParams.adultCount,
+        children: action.searchFlightsParams.childCount,
+        infants: action.searchFlightsParams.infantCount,
+      },
+    };
   }),
   on(FlightsActions.fetchFlightsSuccess, (state, action): FlightsState => {
     return {
@@ -33,6 +42,7 @@ export const flightsReducer = createReducer(
       errorMsg: action.errMessage,
       flightsTo: null,
       flightsBack: null,
+      passengers: null,
     };
   }),
 );

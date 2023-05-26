@@ -4,11 +4,17 @@
     <div class="info-description">{{ config.age }}</div>
   </div>
   <div class="counter">
-    <button mat-icon-button (click)="changePassengers(config.title, 'remove')">
+    <button
+      mat-icon-button
+      (click)="changePassengers(config.title, 'remove'); $event.stopPropagation()"
+    >
       <mat-icon>remove</mat-icon>
     </button>
     <span>{{ passengers[config.key] }}</span>
-    <button mat-icon-button (click)="changePassengers(config.title, 'add')">
+    <button
+      mat-icon-button
+      (click)="changePassengers(config.title, 'add'); $event.stopPropagation()"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </div>
