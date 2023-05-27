@@ -67,7 +67,7 @@
     >
     </ng-container>
 
-    <mat-form-field [matMenuTriggerFor]="passengersMenu">
+    <mat-form-field [matMenuTriggerFor]="passengersMenu" class="passengers-count">
       <mat-label>Passengers</mat-label>
       <input matInput [value]="getPassengersValue()" readonly disabled class="passengers-input" />
       <mat-icon matSuffix>arrow_drop_down</mat-icon>
@@ -113,7 +113,12 @@
       <input matEndDate formControlName="dateTo" />
     </mat-date-range-input>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
+    <mat-date-range-picker #picker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-button matDatepickerApply>OK</button>
+      </mat-datepicker-actions>
+    </mat-date-range-picker>
   </mat-form-field>
 </ng-template>
 
@@ -122,6 +127,11 @@
     <mat-label>Date</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="dateFrom" [min]="minDate" />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-button matDatepickerApply>OK</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
   </mat-form-field>
 </ng-template>

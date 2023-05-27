@@ -7,7 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Airways Angular App';
+  title = 'Angular Airways App';
 
   isMainPage: boolean;
 
