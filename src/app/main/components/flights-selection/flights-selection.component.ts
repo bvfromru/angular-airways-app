@@ -9,6 +9,7 @@ import { DateInputFormats } from 'src/app/core/models/settings.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { selectAllAirports } from 'src/app/redux/selectors/flights.selectors';
 import { Airport, SearchFlightsParams } from 'src/app/redux/state.model';
+import { FLIGHT_TYPES, PASSENGERS_CONFIG } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: 'app-flights-selection',
@@ -20,7 +21,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
 
   trigger: string;
 
-  flightTypes = ['Round Trip', 'One Way'];
+  flightTypes = FLIGHT_TYPES;
 
   flightSearchForm: FormGroup = new FormGroup({});
 
@@ -34,23 +35,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription;
 
-  passengersConfig = {
-    adults: {
-      key: 'adults',
-      title: 'Adult',
-      age: '14+ years',
-    },
-    children: {
-      key: 'children',
-      title: 'Child',
-      age: '2-14 years',
-    },
-    infants: {
-      key: 'infants',
-      title: 'Infant',
-      age: '0-2 years',
-    },
-  };
+  passengersConfig = PASSENGERS_CONFIG;
 
   public passengers = {
     adults: 1,
@@ -79,7 +64,15 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
       from: ['', [Validators.required]],
       to: ['', [Validators.required]],
       dateFrom: ['', [Validators.required]],
-      dateTo: [''],
+      dateTo: ['', [Validators.required]],
+    });
+
+    this.flightSearchForm.get('type')?.valueChanges.subscribe((val: string) => {
+      if (val === FLIGHT_TYPES[1]) {
+        this.flightSearchForm.controls['dateTo'].disable();
+      } else {
+        this.flightSearchForm.controls['dateTo'].enable();
+      }
     });
 
     const formControlFrom = this.flightSearchForm.get('from');

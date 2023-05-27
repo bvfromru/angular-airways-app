@@ -1,5 +1,25 @@
 import { DateInputFormats } from 'src/app/core/models/settings.model';
 
+export const FLIGHT_TYPES = ['Round Trip', 'One Way'];
+
+export const PASSENGERS_CONFIG = {
+  adults: {
+    key: 'adults',
+    title: 'Adult',
+    age: '14+ years',
+  },
+  children: {
+    key: 'children',
+    title: 'Child',
+    age: '2-14 years',
+  },
+  infants: {
+    key: 'infants',
+    title: 'Infant',
+    age: '0-2 years',
+  },
+};
+
 export const DATE_INPUT_DEFAULT_FORMAT: DateInputFormats = {
   parse: {
     dateInput: 'LL',
