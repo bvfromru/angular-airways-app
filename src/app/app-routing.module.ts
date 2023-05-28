@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   { path: APP_ROUTES.mainPage, component: MainPageComponent },
   {
-    path: APP_ROUTES.booking,
+    path: APP_ROUTES.flightsModule,
     loadChildren: () => import('./flights/flights.module').then((m) => m.FlightsModule),
   },
   { path: '**', redirectTo: '404' },

@@ -46,7 +46,10 @@ export const SEATS_COLOR_RANGE = {
 
 export const APP_ROUTES = {
   mainPage: '',
-  booking: 'flights',
+  flightsModule: 'flights',
+  step1: 'step1',
+  step2: 'step2',
+  step3: 'step3',
   notFound: '404',
 };
 

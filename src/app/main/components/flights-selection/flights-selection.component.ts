@@ -9,7 +9,7 @@ import { DateInputFormats } from 'src/app/core/models/settings.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import { selectAllAirports } from 'src/app/redux/selectors/flights.selectors';
 import { Airport, SearchFlightsParams } from 'src/app/redux/state.model';
-import { FLIGHT_TYPES, PASSENGERS_CONFIG } from 'src/app/shared/constants/constants';
+import { APP_ROUTES, FLIGHT_TYPES, PASSENGERS_CONFIG } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: 'app-flights-selection',
@@ -115,7 +115,7 @@ export class FlightsSelectionComponent implements OnInit, OnDestroy {
     if (formData.dateTo) {
       queryParams.backDate = formData.dateTo.toISOString();
     }
-    this.router.navigate(['flights'], { queryParams });
+    this.router.navigate([APP_ROUTES.flightsModule, APP_ROUTES.step1], { queryParams });
   }
 
   onPassengersCountChange(newPassengers: any) {

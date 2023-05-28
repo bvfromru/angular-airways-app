@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import {
@@ -9,6 +9,7 @@ import {
   selectIsLoading,
 } from 'src/app/redux/selectors/flights.selectors';
 import { SearchFlightsParams } from 'src/app/redux/state.model';
+import { APP_ROUTES } from 'src/app/shared/constants/constants';
 import * as FlightsActions from '../../../redux/actions/flights.actions';
 
 @Component({
@@ -16,7 +17,7 @@ import * as FlightsActions from '../../../redux/actions/flights.actions';
   templateUrl: './flights-page.component.html',
   styleUrls: ['./flights-page.component.scss'],
 })
-export class FlightsComponent implements OnInit, OnDestroy {
+export class FlightsPageComponent implements OnInit, OnDestroy {
   flightsTo$ = this.store.select(selectFlightsTo);
 
   flightsBack$ = this.store.select(selectFlightsBack);
@@ -27,7 +28,7 @@ export class FlightsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  constructor(private store: Store, private route: ActivatedRoute) {}
+  constructor(private store: Store, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.subscription = this.route.queryParams.subscribe((params) => {
@@ -39,5 +40,9 @@ export class FlightsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  onSubmit() {
+    this.router.navigate([APP_ROUTES.flightsModule, APP_ROUTES.step2]);
   }
 }
