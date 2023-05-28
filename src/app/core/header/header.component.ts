@@ -32,8 +32,10 @@ export class HeaderComponent {
     router.events.subscribe((v) => {
       if (v instanceof NavigationEnd) {
         this.isMainPage = v.url === '/';
-        if (v.url.includes(APP_ROUTES.flightsModule)) {
+        if (v.url.includes(APP_ROUTES.step1)) {
           this.step = 1;
+        } else if (v.url.includes(APP_ROUTES.step2)) {
+          this.step = 2;
         }
       }
     });

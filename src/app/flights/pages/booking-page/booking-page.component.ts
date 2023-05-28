@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './booking-page.component.html',
   styleUrls: ['./booking-page.component.scss'],
 })
-export class BookingPageComponent {}
+export class BookingPageComponent {
+  constructor(private location: Location) {}
+
+  onBackClicked() {
+    this.location.back();
+  }
+}

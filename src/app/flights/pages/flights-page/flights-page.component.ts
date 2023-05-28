@@ -28,10 +28,13 @@ export class FlightsPageComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
+  queryParams: SearchFlightsParams;
+
   constructor(private store: Store, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.subscription = this.route.queryParams.subscribe((params) => {
+      this.queryParams = params as SearchFlightsParams;
       this.store.dispatch(
         FlightsActions.fetchFlightsStart({ searchFlightsParams: params as SearchFlightsParams }),
       );
@@ -43,6 +46,8 @@ export class FlightsPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.router.navigate([APP_ROUTES.flightsModule, APP_ROUTES.step2]);
+    this.router.navigate([APP_ROUTES.flightsModule, APP_ROUTES.step2], {
+      queryParams: this.queryParams,
+    });
   }
 }

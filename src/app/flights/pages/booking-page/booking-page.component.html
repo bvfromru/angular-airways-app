@@ -12,5 +12,21 @@
   <div class="description">
     Enter the passenger's names as they appear on document (passport or ID).
   </div>
-  <app-passenger-form></app-passenger-form>
+
+  <app-passenger-form passengerType="1. Adult"></app-passenger-form>
+  <app-passenger-form passengerType="2. Child"></app-passenger-form>
+  <app-passenger-form passengerType="3. Infant"></app-passenger-form>
+
+  <div class="heading">
+    <img src="../../../../assets/svg/contact-details-icon.svg" alt="i" />
+    Contact details
+  </div>
+  <div class="description">
+    We need contact details to be able to deliver the latest information regarding your flight.
+  </div>
+
+  <div class="buttons">
+    <button mat-button type="button" class="back-button" (click)="onBackClicked()">Back</button>
+    <button mat-button type="submit" class="continue-button">Continue</button>
+  </div>
 </div>

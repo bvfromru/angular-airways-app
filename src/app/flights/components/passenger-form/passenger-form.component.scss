@@ -18,6 +18,10 @@
     align-items: center;
     gap: 20px;
     margin-bottom: 24px;
+
+    @media (max-width: 900px) {
+      flex-wrap: wrap;
+    }
   }
 
   .info-icon {
