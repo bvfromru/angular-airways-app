@@ -1,0 +1,97 @@
+<div [ngClass]="{ backward: direction === 'backward' }" class="container">
+  <div class="heading">
+    <img
+      src="../../../../assets/svg/plane-destinations.svg"
+      alt="destinations"
+      class="plane-destinations"
+    />
+    {{ flights[5].flights.form.city }} to {{ flights[5].flights.to.city }}
+  </div>
+  <div class="swiper" *ngIf="isEditMode">
+    <div [className]="'swiper-button-prev swiper-button-prev-' + direction"></div>
+    <div [className]="'swiper-button-next swiper-button-next-' + direction"></div>
+    <swiper-container appSwiper [config]="config" init="false" class="swiper-container">
+      <swiper-slide
+        class=""
+        *ngFor="let flight of flights; let i = index"
+        class="swiper-slide"
+        (click)="onFlightClick(flight, i)"
+        [ngClass]="{ disabled: !flight.flights, selected: i === currentIndex }"
+        [appColormark]="flight.flights ? flight.flights.seats.avaible : 0"
+      >
+        <ng-container
+          [ngTemplateOutlet]="flight.flights ? availableFlight : noFlight"
+          [ngTemplateOutletContext]="{ flight: flight }"
+        >
+        </ng-container>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="selected-info">
+    <div class="selected-details">
+      <div class="from-date">{{ currentFlight.takeoffDate | date : 'E, d LLL YYYY' }}</div>
+      <div class="flight-duration">{{ currentFlight.timeMins | durationTime }}</div>
+      <div class="to-date">{{ currentFlight.landingDate | date : 'E, d LLL YYYY' }}</div>
+      <div class="from-time">
+        <span class="time">{{ currentFlight.takeoffDate | date : 'H:mm' }}</span> UTC +0
+      </div>
+      <div class="plane"><img src="../../../../assets//svg/plane-route.svg" alt="plane" /></div>
+      <div class="to-time">
+        UTC +1 <span class="time">{{ currentFlight.landingDate | date : 'H:mm' }}</span>
+      </div>
+
+      <div class="from-city">{{ currentFlight.form.city }}</div>
+      <div class="direct">Direct</div>
+      <div class="to-city">{{ currentFlight.to.city }}</div>
+    </div>
+    <div class="flight-number">
+      Flight no.&nbsp; <span class="number">{{ currentFlight.flightNumber }}</span>
+    </div>
+    <div class="selected-price">
+      <div class="price-column">
+        <div class="seats-counter" [appColormark]="currentFlight.seats.avaible">
+          {{ currentFlight.seats.avaible }} seats available
+        </div>
+        <div>Price</div>
+        <ng-container
+          [ngTemplateOutlet]="priceAmount"
+          [ngTemplateOutletContext]="{ price: currentFlight.price }"
+        ></ng-container>
+      </div>
+      <div class="select-column">
+        <button
+          type="button"
+          class="select-button"
+          *ngIf="isEditMode; else editBtn"
+          (click)="onSelectBtnClick()"
+        >
+          Select
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #editBtn>
+  <button type="button" class="edit-button" (click)="onEditBtnClick()">Edit</button>
+</ng-template>
+
+<ng-template #priceAmount let-price="price">
+  <div class="price-amount">
+    {{ currentCurrency.sign }}{{ price[currentCurrency.name].toFixed(2) }}
+  </div>
+</ng-template>
+
+<ng-template #availableFlight let-flight="flight">
+  <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
+  <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
+  <div class="price">
+    {{ currentCurrency.sign }}{{ flight.flights.price[currentCurrency.name].toFixed(2) }}
+  </div>
+</ng-template>
+
+<ng-template #noFlight let-flight="flight">
+  <div class="date">{{ flight.date | date : 'dd MMM' }}</div>
+  <div class="weekday">{{ flight.date | date : 'EEEE' }}</div>
+  <img src="../../../../assets//svg/disabled-flight.svg" alt="n/a" />
+</ng-template>

@@ -1,0 +1,55 @@
+<form class="form">
+  <div class="heading">{{ passengerType }}</div>
+  <div class="fields">
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input type="text" matInput placeholder="Enter your First Name" />
+      <img
+        class="info-icon"
+        src="../../../../assets/svg/info-icon.svg"
+        matSuffix
+        [matTooltip]="tooltipMessage"
+        matTooltipPosition="right"
+        matTooltipHideDelay="100"
+        tooltipClass="tooltip"
+        alt="i"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input type="text" matInput placeholder="Enter your Last Name" />
+      <img
+        class="info-icon"
+        src="../../../../assets/svg/info-icon.svg"
+        matSuffix
+        [matTooltip]="tooltipMessage"
+        matTooltipPosition="right"
+        matTooltipHideDelay="100"
+        tooltipClass="tooltip"
+        alt="i"
+      />
+    </mat-form-field>
+
+    <mat-button-toggle-group class="button-toggle-group">
+      <mat-button-toggle value="Male" class="button-toggle">Male</mat-button-toggle>
+      <mat-button-toggle value="Female" class="button-toggle">Female</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <mat-form-field class="date-picker">
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-button matDatepickerApply>OK</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+  </div>
+  <mat-slide-toggle class="toggle"
+    ><img src="../../../../assets/svg/special-assistance.svg" alt="assistance?" /> Need special
+    assistance?</mat-slide-toggle
+  >
+</form>

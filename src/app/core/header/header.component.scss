@@ -1,0 +1,135 @@
+.mat-toolbar {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background-color: var(--white);
+
+  &.main-page {
+    background-color: rgba(116, 118, 122, 0.2);
+  }
+
+  @media (max-width: 1040px) {
+    min-height: 160px;
+    height: auto;
+    padding: 20px;
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  @media (max-width: 1040px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .header-input,
+  .auth-btn {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 8px;
+    height: 40px;
+    background: rgba(241, 243, 246, 0.15);
+    border: 0.5px solid var(--neutral-60);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-input {
+    ::ng-deep .mat-mdc-select-trigger {
+      padding: 12px 16px;
+    }
+  }
+
+  .mainpage-link {
+    display: block;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .logo {
+    width: 114px;
+    height: 40;
+  }
+
+  .header-breadcrumbs {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .header-page-info {
+      text-align: right;
+      margin-right: 20px;
+    }
+  }
+
+  .header-settings {
+    display: flex;
+    justify-content: center;
+    gap: 17px;
+
+    @media (max-width: 900px) {
+      gap: 16px;
+    }
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .date-format-input {
+      min-width: 162px;
+    }
+
+    .currency-input {
+      min-width: 62px;
+      font-weight: 500;
+
+      ::ng-deep .mat-mdc-select-arrow-wrapper {
+        display: none;
+      }
+
+      ::ng-deep .mat-mdc-select-value {
+        text-align: center;
+      }
+    }
+
+    .auth-btn {
+      cursor: pointer;
+      font-family: 'Roboto';
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      min-width: 114px;
+    }
+
+    .cart-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+::ng-deep .mat-mdc-select-value,
+.auth-btn,
+.cart-btn {
+  color: var(--neutral-10);
+}
+
+.main-page {
+  ::ng-deep .mat-mdc-select-value,
+  ::ng-deep .mat-mdc-select-trigger .mat-mdc-select-arrow,
+  .auth-btn,
+  .cart-btn {
+    color: var(--white);
+  }
+}

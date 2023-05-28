@@ -1,0 +1,49 @@
+:host {
+  padding: 30px;
+}
+
+.buttons {
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+
+  @media (max-width: 500px) {
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 12px 24px;
+    width: 126px;
+    height: 60px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #11397e;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .continue-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    width: 126px;
+    height: 60px;
+    background: #11397e;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--white);
+    cursor: pointer;
+  }
+}

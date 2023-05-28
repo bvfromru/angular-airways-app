@@ -1,0 +1,81 @@
+.info-row-wrapper {
+  background-color: var(--secondary-100);
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+}
+
+.info-row-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 5px;
+
+  @media (max-width: 1150px) {
+    padding: 5px 20px;
+  }
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.destinations {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  gap: 16px;
+}
+
+.dates {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--neutral-30);
+}
+
+.edit-btn {
+  width: 44px;
+  height: 28px;
+  background: var(--neutral-90);
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.passengers {
+  div {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+}
+
+.bullet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--navy);
+  }
+}

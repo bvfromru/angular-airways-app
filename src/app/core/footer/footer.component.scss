@@ -1,0 +1,65 @@
+.mat-toolbar {
+  height: 92px;
+  border-top: 1px solid #d0d9df;
+  background-color: var(--light-grey);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    height: auto;
+    padding: 10px;
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .copyright {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .github-info {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      img {
+        width: 26px;
+      }
+
+      a {
+        color: var(--black);
+        text-decoration: none;
+      }
+    }
+
+    .payments {
+      display: flex;
+      gap: 24px;
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .payment-services {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+    }
+  }
+}

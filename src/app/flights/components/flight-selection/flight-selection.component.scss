@@ -1,0 +1,362 @@
+.container {
+  padding: 10 0px;
+  padding-bottom: 30px;
+
+  @media (max-width: 1132px) {
+    padding: 10px;
+  }
+}
+
+.heading {
+  img {
+    margin-right: 14px;
+  }
+
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #11397e;
+  margin-bottom: 16px;
+}
+
+.swiper {
+  margin-bottom: 8px;
+}
+
+.swiper-container {
+  width: 100%;
+  min-height: 88px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.swiper-slide {
+  background: #ffffff;
+  color: #000;
+  text-align: center;
+  line-height: 300px;
+  border-left: 1px solid #cecece;
+  border-right: 1px solid #cecece;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  min-height: 66px;
+}
+
+.swiper-slide-prev,
+.swiper-slide-next {
+  border-left: none;
+  border-right: none;
+}
+
+::ng-deep :root {
+  --swiper-theme-color: #1c1b1f;
+  --swiper-navigation-size: 8px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 24px;
+  height: 24px;
+  background-color: #e9edf1;
+  border-radius: 50%;
+  color: #1c1b1f !important;
+  margin-top: 0px;
+}
+
+.date {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0090bd;
+  margin-bottom: 2px;
+}
+
+.weekday {
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 12px;
+  color: #74767a;
+  margin-bottom: 3px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #11397e;
+}
+
+.swiper-slide.selected {
+  &.green {
+    border-bottom: 4px solid #33f150;
+  }
+
+  &.yellow {
+    border-bottom: 4px solid #f1c933;
+  }
+
+  &.red {
+    border-bottom: 4px solid #b3261e;
+  }
+
+  .date {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    color: #11397e;
+    margin-bottom: 5px;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
+  }
+
+  .price {
+    font-size: 30px;
+    line-height: 36px;
+
+    @media (max-width: 500px) {
+      font-size: 22px;
+    }
+  }
+}
+
+.selected-info {
+  background: #ffffff;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 10fr 3fr 5fr;
+  padding: 0px 10px;
+
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.selected-details {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  padding: 25px 8px 25px 28px;
+
+  @media (max-width: 500px) {
+    padding: 10px;
+  }
+
+  .from-date,
+  .to-date {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #74767a;
+
+    @media (max-width: 500px) {
+      font-size: 12px;
+    }
+  }
+
+  .flight-duration,
+  .direct {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+    text-align: center;
+  }
+
+  .from-time,
+  .to-time {
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 20px;
+    color: #74767a;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .time {
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 36px;
+      color: #000000;
+
+      @media (max-width: 500px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .from-city,
+  .to-city {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #74767a;
+  }
+
+  .plane {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+      height: 50%;
+      width: 100%;
+      align-self: end;
+      border-top: 2px solid #d0d9df;
+    }
+  }
+
+  .to-date,
+  .to-city {
+    text-align: right;
+  }
+
+  .to-time {
+    justify-content: flex-end;
+  }
+}
+
+.flight-number {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #74767a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 10px;
+
+  .number {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+  }
+}
+
+.selected-price {
+  border-left: 2px dashed #d0d9df;
+  display: flex;
+  padding: 20px 18px;
+
+  @media (max-width: 900px) {
+    border-top: 2px dashed #d0d9df;
+    border-left: none;
+  }
+
+  .price-column {
+    width: 133px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    color: #74767a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
+
+    .seats-counter {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+      color: #454a53;
+      border-radius: 2px;
+      padding: 4px 4px 4px 30px;
+
+      &.green {
+        background: rgba(51, 241, 67, 0.3);
+      }
+
+      &.yellow {
+        background: rgba(241, 201, 51, 0.3);
+      }
+
+      &.red {
+        background: rgba(179, 38, 30, 0.3);
+      }
+    }
+
+    .price-amount {
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 36px;
+      text-align: right;
+      color: #11397e;
+    }
+  }
+
+  .select-column {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+
+    button {
+      box-sizing: border-box;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    .select-button {
+      width: 78px;
+      height: 36px;
+      background: linear-gradient(108.75deg, #0090bd 59.91%, #073590 95.36%);
+      border: 1px solid #11397e;
+      color: #ffffff;
+    }
+
+    .edit-button {
+      width: 44px;
+      height: 28px;
+      background: #f4f6f9;
+      border: none;
+      color: #11397e;
+    }
+  }
+}
+
+.backward {
+  .plane,
+  .plane-destinations {
+    transform: scaleX(-1);
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+
+  .date {
+    color: #d0d9df;
+  }
+
+  .weekday {
+    color: #74767a;
+  }
+}

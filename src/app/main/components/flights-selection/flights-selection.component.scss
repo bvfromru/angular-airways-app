@@ -1,0 +1,116 @@
+.flight-select-form {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 580px;
+  position: relative;
+
+  .flight-type {
+    margin-bottom: 16px;
+  }
+
+  .submit-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    background: #11397e;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--white);
+    max-width: 126px;
+    height: 60px;
+    cursor: pointer;
+    align-self: flex-end;
+    width: 100%;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  .date-picker {
+    flex-grow: 1;
+    min-width: 310px;
+  }
+
+  .details {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 26px;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  .route {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .reverse-btn {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 49%;
+    transform: translateY(-50%);
+    z-index: 9999;
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--white);
+    border: 1px solid rgba(116, 118, 122, 0.6);
+    border-radius: 50%;
+    color: #74767a;
+
+    cursor: pointer;
+  }
+}
+
+.passengers-input {
+  color: var(--black);
+  text-overflow: ellipsis;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  padding: 20px !important;
+}
+
+.option-heading {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--neutral-0);
+}
+
+.option-description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #74767a;
+}
+
+.passengers-count {
+  input {
+    cursor: pointer;
+  }
+  cursor: pointer;
+}
