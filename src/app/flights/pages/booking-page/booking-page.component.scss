@@ -1,0 +1,23 @@
+.component-wrapper {
+  padding: 20px;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 38px;
+  color: var(--primary);
+
+  svg {
+    width: 20px;
+    height: 17px;
+  }
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--neutral-10);
+}

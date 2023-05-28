@@ -71,6 +71,7 @@ $airways-app-theme: mat.define-light-theme(
 
 :root {
   --primary: #11397e;
+  --primary-dark: #10264c;
   --light-grey: #f5f5f5;
   --navy: #0090bd;
   --white: #ffffff;
@@ -267,4 +268,45 @@ body {
 
 .mat-mdc-form-field-subscript-wrapper {
   height: 4px;
+}
+
+.mdc-tooltip__surface {
+  background: var(--white) !important;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 8px !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  letter-spacing: 0.4px !important;
+  color: var(--neutral-0) !important;
+  padding: 16px 24px !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch {
+  background: var(--neutral-90);
+  border: 2px solid var(--neutral-30);
+  width: 52px !important;
+  height: 32px;
+  border-radius: 16px;
+  margin-right: 17px;
+  box-sizing: border-box;
+}
+
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__track {
+  height: 30px !important;
+  border-radius: 15px !important;
+}
+
+.mat-mdc-slide-toggle .mdc-switch .mdc-switch__handle {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+}
+
+.mdc-switch__handle {
+  left: 2px !important;
+}
+
+.mdc-switch--selected .mdc-switch__handle-track {
+  transform: translateX(20px) !important;
 }

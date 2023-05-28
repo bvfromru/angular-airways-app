@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-booking-page',
   templateUrl: './booking-page.component.html',
-  styleUrls: ['./booking-page.component.scss']
+  styleUrls: ['./booking-page.component.scss'],
 })
-export class BookingPageComponent {
-
-}
+export class BookingPageComponent {}
